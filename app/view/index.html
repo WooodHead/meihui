@@ -1,0 +1,76 @@
+{% extends "parent.html" %}
+
+{% block cssfolder %}
+
+	<link rel="stylesheet" type="text/css" href="public/css/lib/iview.css">
+	<link rel="stylesheet" type="text/css" href="public/css/src/base.css"/>
+	<link rel="stylesheet" type="text/css" href="public/css/src/model.css">
+	<link rel="stylesheet" type="text/css" href="public/css/src/index.css"/>
+	<link rel="stylesheet" type="text/css" href="public/css/src/phoneIndex.css"/>
+{% endblock %}
+
+{% block head_btn %}
+<a class="index" href="/">{{__('Home')}}</a>
+<a class="topicsAbout" href="/graduationProjects">{{__('GraduateCourse')}}</a>
+<a class="topics" href="/courseProjects">{{__('Course')}}</a>
+{% endblock %}
+
+{% block container %}
+	<div class="container" :style="containerStyle">
+		<ul class="de_project_photowall">
+
+			<li v-if="screenType == 'PC'" v-for="(item, index) in dataList" :class="'item-'+index">
+				<div class="flip">
+			        <div class="front">
+			            <img :src="item.profileImage">
+			        </div>
+			        <div class="back">
+			            <div class="user_Info">
+			            	<a :href="'/users/'+item.user.Id">
+			            		<img v-if="index < 3" class="photo" :src="item.user.avatarUrl ? item.user.avatarUrl : '../public/images/default_profile.jpg'"/>
+			            		<p v-if="index < 3" class="name" v-text="item.user.fullname"></p>
+			            		<p v-if="index < 3" class="date" v-text="item.createAt"></p>
+			            	</a>
+			            </div>
+			            <div class="project_info">
+			            	<a :href="'/project/'+item.Id" target="_blank">
+			            		<h4 v-text="item.name"></h4>
+			            		<p class="abstract" v-if="!index" v-text="item.description"></p>
+			            	</a>
+			            </div>
+			            <div class="de_stats_tags"  v-if="index < 3">
+			            	<div class="badges" title="{{__('Medal')}}">
+			            		<icon type="ios-ribbon" style="font-size: 20px;" color="#fff"></icon>
+			            		<span v-text="item.medalCount"><span>
+			            	</div>
+			            	<div class="likes" title="{{__('Like')}}">
+								<icon type="ios-thumbs-up" style="font-size: 20px;" color="#fff"></icon>
+			            		<span v-text="item.likeCount"><span>
+			            	</div>
+			            	<div class="comments" title="{{__('Comment')}}">
+			            		<icon type="md-text" style="font-size: 20px;" color="#fff"></icon>
+			            		<span v-text="item.commentCount"></span>
+			            	</div>
+			            </div>
+					</div>
+			    </div>
+			</li>
+			<li v-if="screenType == 'mobile'" v-for="(item, index) in dataList" :class="'item-'+index">
+				<div class="flip">
+					<div class="front" >
+			            <img :src="item.profileImage" @click="tapArtifact(item.Id)">
+			        </div>
+			    </div>
+			</li>
+		</ul>
+	</div>
+{% endblock %}
+
+{% block jsfolder %}
+	<script type="text/javascript" src="public/js/lib/jquery.min.js"></script>
+	<script type="text/javascript" src="public/js/lib/vue.min.js"></script>
+	<script type="text/javascript" src="public/js/lib/iview.min.js"></script>
+	<script type="text/javascript" src="public/js/lib/vue-resource.js"></script>
+	<script type="text/javascript" src="public/js/src/config.js"></script>
+	<script type="text/javascript" src="public/js/src/index.js"></script>
+{% endblock %}

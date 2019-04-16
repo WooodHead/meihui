@@ -1,0 +1,48 @@
+{% extends "parent.html" %}
+
+{% block cssfolder %}
+	<link rel="stylesheet" type="text/css" href="public/css/src/base.css"/>
+	<link rel="stylesheet" type="text/css" href="public/css/lib/iview.css">
+	<link rel="stylesheet" type="text/css" href="public/css/src/createTopics.css"/>
+{% endblock %}
+
+{% block head_btn %}
+<a class="index" href="/">{{__('Home')}}</a>
+<a class="topicsAbout" href="/graduationProjects">{{__('GraduateCourse')}}</a>
+<a class="topics" href="/courseProjects">{{__('Course')}}</a>
+{% endblock %}
+
+{% block container %}
+	<div class="container" :style="containerStyle">
+        <h4 class="title">{{__('CreateOrSetPod')}}</h4>
+        <div class="topic_form">
+            <i-form :model="formItem" :label-width="80" >
+                <form-item label="{{__('Title')}}">
+                    <i-input v-model="formItem.name" placeholder="{{__('EnterTitle')}}"></i-input>
+                </form-item>
+                <form-item label="{{__('Label')}}">
+                    <i-button type="success" size="small" icon="ios-brush" @click="deleteTerm(index)" v-for="(item,index) in terms_arr" style="margin-right:5px;"><span v-text="item.name"></span></i-button>
+                </form-item>
+                <form-item label="{{__('AddLabels')}}">
+                    <i-input v-model="terms_value" @on-blur="createTerm" @on-enter="createTerm" placeholder="{{__('EnterLabel')}}"></i-input>
+                </form-item>
+                <form-item label="{{__('Description')}}">
+                    <i-input v-model="formItem.description" placeholder="{{__('EnterDescription')}}"></i-input>
+                </form-item>
+                <form-item>
+                    <i-button @click="submitData" type="success">{{__('Submit')}}</i-button>
+                </form-item>
+            <i-form>
+        </div>
+
+	</div>
+{% endblock %}
+
+{% block jsfolder %}
+	<script type="text/javascript" src="public/js/lib/jquery.min.js"></script>
+	<script type="text/javascript" src="public/js/lib/vue.min.js"></script>
+	<script type="text/javascript" src="public/js/lib/iview.min.js"></script>
+	<script type="text/javascript" src="public/js/lib/vue-resource.js"></script>
+	<script type="text/javascript" src="public/js/src/config.js"></script>
+	<script type="text/javascript" src="public/js/src/createTopics.js"></script>
+{% endblock %}

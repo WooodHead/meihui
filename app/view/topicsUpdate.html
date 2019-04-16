@@ -1,0 +1,66 @@
+{% extends "parent.html" %}
+
+{% block cssfolder %}
+	<link rel="stylesheet" type="text/css" href="../public/css/src/base.css"/>
+	<link rel="stylesheet" type="text/css" href="../public/css/lib/iview.css">
+	<link rel="stylesheet" type="text/css" href="../public/css/src/topicsUpdate.css"/>
+	<link rel="stylesheet" type="text/css" href="../public/css/src/model.css"/>
+{% endblock %}
+
+{% block head_btn %}
+<a class="index" href="/">{{__('Home')}}</a>
+<a class="topicsAbout" href="/graduationProjects">{{__('GraduateCourse')}}</a>
+<a class="topics" href="/courseProjects">{{__('Course')}}</a>
+{% endblock %}
+
+{% block container %}
+	<div class="container" :style="containerStyle">
+        <h4>{{__('CreateOrSetPod')}}</h4>
+        <i-form :model="formItem" :label-width="80">
+            <div class="form_box">
+                <div class="left_form">
+                    <form-item label="{{__('Title')}}">
+                        <i-input v-model="formItem.name" placeholder="{{__('EnterPodTitle')}}"></i-input>
+                    </form-item>
+                    <form-item label="{{__('Label')}}" id="label_formitem">
+                        <i-button type="success" size="small" icon="ios-brush" @click="deleteTerm(index)" v-for="(item,index) in terms_arr" style="margin-right:5px;"><span v-text="item.name"></span></i-button>
+                    </form-item>
+                    <form-item label="{{__('CreateLabel')}}">
+						<p>{{__('EnterLabel')}}</p>
+                        <i-input v-model="term_value" @on-blur="addTerm" @on-enter="addTerm" placeholder="{{__('EnterLabel')}}"></i-input>
+                    </form-item>
+                    <form-item label="{{__('Description')}}">
+                        <i-input v-model="formItem.description" type="textarea" placeholder="{{__('EnterDescription')}}"></i-input>
+                    </form-item>
+                </div>
+                <div class="right_form">
+                    <div class="status">
+                        <h5>{{__('PodCondition')}}</h5>
+						<span v-if="formItem.status == 0"  class="current_state">{{__('Open')}}</span>
+                        <span v-if="formItem.status == 1"  class="current_state">{{__('Closed')}}</span>
+						<a v-if="formItem.status == 0" @click="updateTopicStatus">{{__('SetDown')}}</a>
+						<a v-if="formItem.status == 1" @click="updateTopicStatus">{{__('SetOpen')}}</a>
+                    </div>
+                    <p class="error_infromation">{{__('PodCloseTitle')}}</p>
+					<i-button type="success" @click="exportExcel" v-if="this.formItem.userId == '{{user.Id}}' || '{{user.roles[0].name}}' == 'admin'" style="margin:10px 0;">{{__('ExportTranscript')}}</i-button>
+					<poptip confirm transfer placement="right" width="200" title="{{__('MakeSureDelete')}}?" @on-ok="deleteTopics">
+				        <i-button type="error" long style="margin:20px 0;">{{__('DeleteWarnning')}}</i-button>
+				    </poptip>
+                    <div class="submit_box">
+                        <i-button type="success" @click="updata_submit">{{__('Confirm')}}</i-button>
+                        <i-button type="default" @click="updata_cancel">{{__('cancel')}}</i-button>
+                    </div>
+                </div>
+            </div>
+        </i-form>
+	</div>
+{% endblock %}
+
+{% block jsfolder %}
+	<script type="text/javascript" src="../public/js/lib/jquery.min.js"></script>
+	<script type="text/javascript" src="../public/js/lib/vue.min.js"></script>
+	<script type="text/javascript" src="../public/js/lib/iview.min.js"></script>
+	<script type="text/javascript" src="../public/js/lib/vue-resource.js"></script>
+	<script type="text/javascript" src="../public/js/src/config.js"></script>
+	<script type="text/javascript" src="../public/js/src/topicsUpdate.js"></script>
+{% endblock %}

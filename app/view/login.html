@@ -1,0 +1,68 @@
+{% extends "parent.html" %}
+
+{% block cssfolder %}
+<link rel="stylesheet" type="text/css" href="public/css/lib/iview.css">
+<link rel="stylesheet" type="text/css" href="public/css/src/base.css" />
+<link rel="stylesheet" type="text/css" href="public/css/src/login.css" />
+<link rel="stylesheet" type="text/css" href="public/css/src/phoneIndex.css"/>
+{% endblock %}
+
+{% block head_btn %}
+<a class="index" href="/">{{__('Home')}}</a>
+<a class="topicsAbout" href="/graduationProjects">{{__('GraduateCourse')}}</a>
+<a class="topics" href="/courseProjects">{{__('Course')}}</a>
+{% endblock %}
+
+
+{% block container %}
+<div class="container" :style="containerStyle">
+	<div class="login_panel">
+		<div class="login_info">
+			<h3 class="title">{{__('SignIn')}}</h3>
+			<form id="myform" method="post" action="/login" onsubmit="return check(this)">
+				<div class="username">
+					<label>{{__('Username')}}</label>
+					<input type="text" name="username" v-model="username" placeholder="{{__('EnterPhone')}}">
+				</div>
+				<div class="password">
+					<label>{{__('Password')}}</label>
+					<input type="password" name="password" v-model="password" placeholder="{{__('EnterPwd')}}">
+				</div>
+				<div class="captcha">
+					<label>{{__('Code')}}</label>
+					<input class="captcha_input" type="text" name="captchaText" v-model="captchaText" placeholder="{{__('EnterCode')}}">
+					<object style="width: 120px;"></object>
+					<icon type="md-refresh" size="30" @click="tapClick" style="cursor:pointer;"></icon>
+				</div>
+
+				<div class="rememberPwd">
+					<checkbox v-model="single">{{__('RememberMe')}}</checkbox>
+					<!-- <i-button class="wxLoginBtn" type="success" @click="wxlogin" ghost>微信登陆</i-button> -->
+				</div>
+
+				<input class="submit" type="submit" @click="localStorage" name="submit" value="{{__('LogIn')}}">
+
+				<i-button class="forgetPwd" type="warning" to="/forgetPwd" ghost>{{__('ForgotPwd')}}?</i-button>
+			</form>
+			<p style="color:#ed4014;text-align:center;margin-top:20px;">{{message}}</p>
+		</div>
+		<div class="register">
+			<h3>{{__('SignUpTitle')}}</h3>
+			<i-button to="/register">{{__('SignUp')}}</i-button>
+		</div>
+	</div>
+	<!-- <Modal v-model="wxloginModal" title="使用微信扫一扫" footer-hide>
+		<iframe src="https://beta.pinwall.design-engine.org/loginByWeixin" sandbox="allow-scripts allow-top-navigation allow-same-origin" style="width:490px;height:440px;border: none;"></iframe>
+    </Modal> -->
+
+</div>
+{% endblock %}
+
+{% block jsfolder %}
+<script type="text/javascript" src="public/js/lib/jquery.min.js"></script>
+<script type="text/javascript" src="public/js/lib/vue.min.js"></script>
+<script type="text/javascript" src="public/js/lib/iview.min.js"></script>
+<script type="text/javascript" src="public/js/lib/vue-resource.js"></script>
+<script type="text/javascript" src="public/js/src/config.js"></script>
+<script type="text/javascript" src="public/js/src/login.js"></script>
+{% endblock %}

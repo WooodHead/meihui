@@ -1,0 +1,167 @@
+{% extends "parent.html" %}
+
+{% block cssfolder %}
+	<link rel="stylesheet" type="text/css" href="../public/css/src/base.css"/>
+	<link rel="stylesheet" type="text/css" href="../public/css/lib/iview.css">
+	<link rel="stylesheet" type="text/css" href="../public/css/src/uploadWork.css"/>
+	<link rel="stylesheet" type="text/css" href="../public/css/src/model.css"/>
+{% endblock %}
+
+{% block head_btn %}
+<a class="index" href="/">{{__('Home')}}</a>
+<a class="topicsAbout" href="/graduationProjects">{{__('GraduateCourse')}}</a>
+<a class="topics" href="/courseProjects">{{__('Course')}}</a>
+{% endblock %}
+
+{% block container %}
+	<div class="container" :style="containerStyle">
+		<h4 class="upload_title" v-text="'{{__('Upload/modify')}}' + '{{user.fullname}}' + jobTagName"></h4>
+		<nav class="step_nav">
+			<ul class="step_nav_ul">
+				<li class="step_nav_li" :class="{active:stepOneActive}" @click="goStep1">1.{{__('AddBasicInfo')}}&nbsp;&nbsp;&nbsp;&nbsp;></li>
+				<li class="step_nav_li" :class="{active:stepTwoActive}" @click="goStep2">2.{{__('Upload')}}&nbsp;&nbsp;&nbsp;&nbsp;></li>
+				<li class="step_nav_li" :class="{active:stepThreeActive}" @click="goStep3">3.{{__('PreviewSubmit')}}</li>
+			</ul>
+		</nav>
+		<div class="upload_form">
+			<back-top></back-top>
+			<i-form :model="dataItem" :label-width="80" @keydown.native.enter.prevent ="keyDownEvent" :rules="ruleValidate">
+				<div class="step1" v-show="stepOneActive">
+					<row>
+						<i-col span="10" push="1">
+							<form-item label="{{__('Title')}}" prop="name">
+								<i-input v-model="dataItem.name" placeholder="{{__('EnterTitle')}}" clearable></i-input>
+							</form-item>
+							<form-item label="{{__('Label')}}" id="label_formitem">
+								<i-button type="success" size="small" icon="ios-brush" @click="deleteLabel(index)" v-for="(item,index) in terms_arr" style="margin-right:5px;"><span v-text="item.name"></span></i-button>
+							</form-item>
+							<form-item label="{{__('AddLabels')}}">
+								<i-input class="terms_input" placeholder="{{__('EnterLabel')}}" @on-blur="createTerm" @on-enter="createTerm" v-model="terms_value" clearable></i-input>
+							</form-item>
+							<form-item label="{{__('Description')}}" prop="description">
+								<i-input v-model="dataItem.description" type="textarea" placeholder="{{__('EnterDescription')}}"></i-input>
+							</form-item>
+						</i-col>
+						<i-col span="10" push="2">
+							<form-item label="{{__('Title')}}">
+								<div class="step1_upload">
+									<i-button type="success" id="step1_upload_fengmian">{{__('UploadCover')}}</i-button>
+									<input type="file" @change="step1_upload_fengmian_change" id="step1_upload_fengmian_input" accept="image/*" style="display:none;"/>
+								</div>
+								<p>{{__('CoverImgRules')}}</p>
+							</form-item>
+							<form-item label="{{__('CoverPreview')}}" prop="profileImage">
+								<img class="project_thumb" :src="step1_upload_fengmian_src ? step1_upload_fengmian_src : '../public/images/default_thumb_500.png'">
+							</form-item>
+						</i-col>
+				</div>
+				<div class="step2" v-show="stepTwoActive">
+					<row>
+						<i-col span="6">
+							<div class="step2_upload">
+								<i-button icon="md-add-circle" type="success" id="step2_upload_btn" long>{{__('UploadPicture')}}</i-button>
+								<input type="file" @change="step2_upload_neirong_change" id="step2_upload_input" accept="image/*" style="display:none;"/>
+							</div>
+							<ul class="uploaded_list" id="uploaded_list">
+								<li @click="selectLi(index)" v-for="(item, index) in step2_upload_neirong_src">
+									<img class="thumb" :src="item" />
+									<span style="width: 60px;overflow-x: hidden;word-break: keep-all;" v-text="neirong_truename_arr[index]?neirong_truename_arr[index].split('.')[0] : ''"></span>
+									<i-button icon="md-trash" shape="circle" type="error" @click.stop="deleteUploadImg(index)"></i-button>
+								</li>
+							</ul>
+						</i-col>
+						<i-col span="18">
+							<p style="width:100%;height:35px;background:white;line-height: 35px;color: #666;text-align: center;border: 1px solid #CECFCF;" v-text="neirong_truename_arr[which_artifact_assets]"></p>
+							<div style="display:flex;flex-direction:row;" v-show="upload_show">
+								<div class="content" v-show="step2_upload_neirong_src.length">
+									<p class="label">{{__('PreviewPicture')}}</p>
+									<p class="tooltips">{{__('PictureSize')}}</p><br>
+									<div class="step3_upload">
+										<i-button type="default" class="step2_change_upload_btn" long>{{__('Replace')}}</i-button>
+										<input type="file" @change="step2_upload_change" class="step2_change_upload_input" accept="aplication/zip" style="display:none;"/>
+									</div><br>
+									<img class="thumb" style="width:200px;height:auto;margin: 0 auto;" :src="step2_upload_neirong_src[which_artifact_assets]">
+								</div>
+								<div class="other_info" id="other_info" v-show="step2_upload_neirong_src.length">
+									<div style="display: flex;flex-direction: row;justify-content: space-between;">
+										<p>{{__('BindMedia')}} <span style="color: #3399cc;">{{__('Optional')}}</span></p>
+										<dropdown >
+											<a href="javascript:void(0)">
+												{{__('AddFiles')}}
+												<icon type="ios-arrow-down"></icon>
+											</a>
+											<dropdown-menu slot="list">
+												<dropdown-item>
+													<div class="step2_upload">
+														<i-button icon="ios-play" id="step2_upload_MP4_btn">{{__('MP4')}}</i-button>
+														<input type="file" @change="step2_upload_MP4_change" id="step2_upload_MP4_input" accept="audio/mp4,video/mp4" style="display:none;"/>
+													</div>
+												</dropdown-item>
+												<dropdown-item>
+													<div class="step2_upload">
+														<i-button icon="ios-book" id="step2_upload_PDF_btn">{{__('PDF')}}</i-button>
+														<input type="file" @change="step2_upload_PDF_change" id="step2_upload_PDF_btninput" accept="application/pdf" style="display:none;"/>
+													</div>
+												</dropdown-item>
+												<dropdown-item>
+													<div class="step2_upload">
+														<i-button icon="ios-folder" id="step2_upload_ZIP_btn">{{__('ZIP')}}</i-button>
+														<input type="file" @change="step2_upload_ZIP_change" id="step2_upload_ZIP_input" accept="application/x-zip-compressed" style="display:none;"/>
+													</div>
+												</dropdown-item>
+											</dropdown-menu>
+										</dropdown>
+									</div>
+									<div  v-for="(item,index) in step2_between_arr" v-if="which_artifact_assets === index">
+										<div><i-progress :percent="file_otherinof_arr[index].progress ? file_otherinof_arr[index].progress: 0" /><br></div>
+										<p v-text="'{{__('FileName')}}:' + file_otherinof_arr[index].fileTrueName"></p><br><br>
+										<p>{{__('Title')}} <span style="color: #3399cc;">{{__('Optional')}}</span></p>
+										<i-input placeholder="{{__('EnterWorkTitle')}}" v-model="step2_between_arr[index].name" maxlength='100' clearable></i-input><br><br>
+										<p>{{__('Describe')}} <span style="color: #3399cc;">{{__('Optional')}}</span></p>
+										<i-input type="textarea" placeholder="{{__('EnterDescription')}}" v-model="step2_between_arr[index].description"></i-input><br>
+									</div>
+								</div>
+							</div>
+						</i-col>
+					</row>
+				</div>
+				<div class="step3" v-show="stepThreeActive">
+					<div class="submit_box">
+						<a @click="submitData">
+							<img src="../public/images/flag_green.png">
+							<icon type="ios-thumbs-up" style="font-size: 40px; position: absolute;top: 15px;left: 20px;"></icon>
+							<span>{{__('Submit')}}</span>
+						</a>
+					</div>
+					<div class="user_info">
+						<a href="#">
+							<img class="photo" :src="'{{user.avatarUrl}}' ? '{{user.avatarUrl}}' : '../public/images/default_profile.jpg'">
+							<p class="name">{{user.fullname}}</p>
+						</a>
+					</div>
+					<h2 v-text="dataItem.name"></h2>
+					<p class="abstract" v-text="dataItem.description"></p>
+					<div class="main_content">
+						<figure v-for="item in dataItem.artifact_assets">
+							<img :src="item.viewImgUrl">
+							<figcaption>
+								<span class="title" v-text="item.name"></span>
+								<p class="des" v-text="item.description"></p>
+							</figcaption>
+						</figure>
+					</div>
+				</div>
+			</i-form>
+
+		</div>
+	</div>
+{% endblock %}
+
+{% block jsfolder %}
+	<script type="text/javascript" src="../public/js/lib/jquery.min.js"></script>
+	<script type="text/javascript" src="../public/js/lib/vue.min.js"></script>
+	<script type="text/javascript" src="../public/js/lib/iview.min.js"></script>
+	<script type="text/javascript" src="../public/js/lib/aliyun-oss-sdk.min.js"></script>
+	<script type="text/javascript" src="../public/js/src/config.js"></script>
+	<script type="text/javascript" src="../public/js/src/uploadWork.js"></script>
+{% endblock %}

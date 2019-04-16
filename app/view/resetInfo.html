@@ -1,0 +1,57 @@
+{% extends "parent.html" %}
+
+{% block cssfolder %}
+	<link rel="stylesheet" type="text/css" href="public/css/src/base.css"/>
+	<link rel="stylesheet" type="text/css" href="public/css/lib/iview.css">
+	<link rel="stylesheet" type="text/css" href="public/css/src/resetInfo.css"/>
+{% endblock %}
+
+{% block head_btn %}
+<a class="index" href="/">{{__('Home')}}</a>
+<a class="topicsAbout" href="/graduationProjects">{{__('GraduateCourse')}}</a>
+<a class="topics" href="/courseProjects">{{__('Course')}}</a>
+{% endblock %}
+
+{% block container %}
+	<div class="container" :style="containerStyle">
+		<h3>{{__('PersonalInfo')}}</h3>
+        <div class="resetInfo_panel">
+            <div class="photo_field">
+				<img class="thumb" style="width:50px;height:50px;border-radius:25px;" :src="avatarUrl ? avatarUrl : '../public/images/default_profile.jpg'"><br>
+				<i-button type="default" class="uploadAvatar">{{__('ChoosePicture')}}</i-button>
+				<input type="file" @change="uploadAvatarChange" class="uploadAvatar_input" accept="aplication/zip" style="display:none;"/>
+            </div>
+            <div class="user_info">
+				<p>{{__('AvatarTitle')}}</p>
+				<i-button type="success" @click="submitUserAvatar('{{user.Id}}')">{{__('Save')}}</i-button>
+            </div>
+        </div>
+        <div class="resetPwd_panel">
+            <p style="font-weight: normal;font-size: 16px;color: #09bc72;margin: 15px 0;text-align: center;">{{__('PwdTitle')}}</p>
+            <i-form :model="pwdItem" :label-width="80" :rules="ruleValidate">
+                <form-item label="{{__('OldPwd')}}" prop="password">
+                    <i-input type="password" v-model="pwdItem.password" placeholder="{{__('EnterOldPwd')}}"></i-input>
+                </form-item>
+                <form-item label="{{__('NewPwd')}}" prop="newPwd">
+                    <i-input type="password" v-model="pwdItem.newPwd" placeholder="{{__('EnterNewPwd')}}"></i-input>
+                </form-item>
+                <form-item label="{{__('NewPwd')}}" prop="confirmPassword">
+                    <i-input type="password" v-model="pwdItem.confirmPassword" @on-blur="conPwdBlur" placeholder="{{__('EnterNewPwd')}}"></i-input>
+                </form-item>
+                <form-item>
+                    <i-button type="success" @click="restPwd" :disabled="restDisabled">{{__('Submit')}}</i-button>
+                </form-item>
+            </i-form>
+        </div>
+	</div>
+
+{% endblock %}
+
+{% block jsfolder %}
+	<script type="text/javascript" src="public/js/lib/jquery.min.js"></script>
+	<script type="text/javascript" src="public/js/lib/vue.min.js"></script>
+	<script type="text/javascript" src="public/js/lib/iview.min.js"></script>
+	<script type="text/javascript" src="public/js/lib/vue-resource.js"></script>
+	<script type="text/javascript" src="public/js/src/config.js"></script>
+	<script type="text/javascript" src="public/js/src/resetInfo.js"></script>
+{% endblock %}

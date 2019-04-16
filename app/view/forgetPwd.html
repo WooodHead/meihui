@@ -1,0 +1,50 @@
+{% extends "parent.html" %}
+
+{% block cssfolder %}
+<link rel="stylesheet" type="text/css" href="public/css/lib/iview.css">
+<link rel="stylesheet" type="text/css" href="public/css/src/base.css" />
+<link rel="stylesheet" type="text/css" href="public/css/src/forgetPwd.css" />
+{% endblock %}
+
+{% block head_btn %}
+<a class="index" href="/">{{__('Home')}}</a>
+<a class="topicsAbout" href="/graduationProjects">{{__('GraduateCourse')}}</a>
+<a class="topics" href="/courseProjects">{{__('Course')}}</a>
+{% endblock %}
+
+
+{% block container %}
+<div class="container" :style="containerStyle">
+    <div class="recoverPwd_panel">
+        <p class="title">{{__('ForgotPwd')}}</p>
+        <p class="des">{{__('ForgotPwdTitle')}}</p>
+        <i-form :label-width="120">
+            <form-item label="{{__('PhoneNumber')}}">
+                <i-input v-model="mobile" placeholder="{{__('EnterPhone')}}"></i-input>
+            </form-item>
+            <form-item label="{{__('code')}}">
+                <i-input class="code_input" type="text" v-model="smsCode" @on-change="checkMobileCode" placeholder="{{__('Code')}}"></i-input>
+                <i-button type="default" :disabled="disableCodeBtn" @click="sendAcodeStg" v-text="mobileCodeText"></i-button>
+            </form-item>
+            <form-item label="{{__('Password')}}" v-if="showUpdataData">
+                <i-input type="password" v-model="password" clearable placeholder="{{__('EnterPwd')}}"></i-input>
+            </form-item>
+            <form-item label="{{__('ConfirmPwd')}}" v-if="showUpdataData">
+                <i-input type="password" v-model="confirmPassword" @on-blur="conPwdBlur" clearable placeholder="{{__('EnterPwd')}}"></i-input>
+            </form-item>
+            <form-item>
+                <i-button type="success" @click="submit" :disabled="disabledBtn" long>{{__('Submit')}}</i-button>
+            </form-item>
+        </i-form>
+    </div>
+</div>
+{% endblock %}
+
+{% block jsfolder %}
+<script type="text/javascript" src="public/js/lib/jquery.min.js"></script>
+<script type="text/javascript" src="public/js/lib/vue.min.js"></script>
+<script type="text/javascript" src="public/js/lib/iview.min.js"></script>
+<script type="text/javascript" src="public/js/lib/vue-resource.js"></script>
+<script type="text/javascript" src="public/js/src/config.js"></script>
+<script type="text/javascript" src="public/js/src/forgetPwd.js"></script>
+{% endblock %}

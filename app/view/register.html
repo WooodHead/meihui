@@ -1,0 +1,58 @@
+{% extends "parent.html" %}
+
+{% block cssfolder %}
+	<link rel="stylesheet" type="text/css" href="public/css/lib/iview.css">
+	<link rel="stylesheet" type="text/css" href="public/css/src/base.css"/>
+	<link rel="stylesheet" type="text/css" href="public/css/src/register.css"/>
+{% endblock %}
+
+{% block head_btn %}
+<a class="index" href="/">{{__('Home')}}</a>
+<a class="topicsAbout" href="/graduationProjects">{{__('GraduateCourse')}}</a>
+<a class="topics" href="/courseProjects">{{__('Course')}}</a>
+{% endblock %}
+
+
+{% block container %}
+	<div class="container" :style="containerStyle">
+        <div class="register_panel">
+            <p class="title">{{__('SignUp')}}</p>
+            <i-form ref="formItem" :model="formItem" :label-width="120" :rules="ruleValidate">
+                <form-item label="{{__('Username')}}" prop="fullname">
+                    <i-input v-model="formItem.fullname" clearable placeholder="{{__('EnterUsername')}}"></i-input>
+                </form-item>
+                <form-item label="{{__('PhoneNumber')}}" prop="mobile">
+                    <i-input v-model="formItem.mobile" clearable placeholder="{{__('EnterPhone')}}"></i-input>
+                </form-item>
+				<form-item label="{{__('SMSCode')}}" prop="smsCode">
+		            <i-input type="text" v-model="formItem.smsCode" style="width:200px;" @on-change="checkMobileCode" placeholder="{{__('Code')}}"></i-input>
+		        	<i-button type="default" :disabled="disableCodeBtn" @click="sendAcodeStg" v-text="mobileCodeText"></i-button>
+		        </form-item>
+                <form-item label="{{__('Password')}}" prop="password">
+                    <i-input type="password" v-model="formItem.password" clearable placeholder="{{__('EnterPwd')}}"></i-input>
+                </form-item>
+				<form-item label="{{__('ConfirmPwd')}}" prop="confirmPassword">
+                    <i-input type="password" v-model="formItem.confirmPassword" @on-blur="conPwdBlur" clearable placeholder="{{__('EnterPwd')}}"></i-input>
+                </form-item>
+                <form-item label="{{__('Code')}}" class="captcha_box">
+                    <i-input type="text" v-model="formItem.captchaText" @on-change="checkCaptcha" clearable style="width:200px;margin-top:-35px;" placeholder="{{__('EnterImgCode')}}"></i-input>
+					<object style="width: 160px;height: 60px;"></object>
+					<icon type="md-refresh" size="30" @click="tapClick" style="margin-top: -35px;cursor:pointer;"></icon>
+                </form-item>
+                <form-item>
+                    <i-button type="success" @click="registerSubmit" :disabled="disabledBtn">{{__('SignUp')}}</i-button>
+                </form-item>
+            </i-form>
+        </div>
+	</div>
+{% endblock %}
+
+{% block jsfolder %}
+	<script type="text/javascript" src="public/js/lib/jquery.min.js"></script>
+	<script type="text/javascript" src="public/js/lib/vue.min.js"></script>
+	<script type="text/javascript" src="public/js/lib/iview.min.js"></script>
+	<script type="text/javascript" src="public/js/lib/vue-resource.js"></script>
+	<script type="text/javascript" src="public/js/src/config.js"></script>
+	<script type="text/javascript" src="public/js/src/register.js"></script>
+
+{% endblock %}
