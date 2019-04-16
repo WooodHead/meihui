@@ -75,7 +75,7 @@
     "onerror": {
       "errorPageUrl": "/50x.html",
       "appErrorFilter": null,
-      "templatePath": "D:\\code\\node\\pinwall_pro_local\\node_modules\\egg-onerror\\lib\\onerror_page.mustache"
+      "templatePath": "D:\\code\\node\\meihui\\node_modules\\egg-onerror\\lib\\onerror_page.mustache"
     },
     "i18n": {
       "defaultLocale": "zh-CN",
@@ -87,20 +87,20 @@
     "watcher": {
       "type": "development",
       "eventSources": {
-        "default": "D:\\code\\node\\pinwall_pro_local\\node_modules\\egg-watcher\\lib\\event-sources\\default",
-        "development": "D:\\code\\node\\pinwall_pro_local\\node_modules\\egg-watcher\\lib\\event-sources\\development"
+        "default": "D:\\code\\node\\meihui\\node_modules\\egg-watcher\\lib\\event-sources\\default",
+        "development": "D:\\code\\node\\meihui\\node_modules\\egg-watcher\\lib\\event-sources\\development"
       }
     },
     "customLogger": {
       "scheduleLogger": {
         "consoleLevel": "NONE",
-        "file": "D:\\code\\node\\pinwall_pro_local\\logs\\pinwall-pro-local-server\\egg-schedule.log"
+        "file": "D:\\code\\node\\meihui\\logs\\meihui\\egg-schedule.log"
       },
       "elasticLogger": {
-        "file": "D:\\code\\node\\pinwall_pro_local\\logs\\transfer.log"
+        "file": "D:\\code\\node\\meihui\\logs\\transfer.log"
       },
       "aliossLogger": {
-        "file": "D:\\code\\node\\pinwall_pro_local\\logs\\alioss.log"
+        "file": "D:\\code\\node\\meihui\\logs\\alioss.log"
       }
     },
     "multipart": {
@@ -116,7 +116,7 @@
         ".pdf"
       ],
       "whitelist": null,
-      "tmpdir": "C:\\Users\\dev\\AppData\\Local\\Temp\\egg-multipart-tmp\\pinwall-pro-local-server",
+      "tmpdir": "C:\\Users\\dev\\AppData\\Local\\Temp\\egg-multipart-tmp\\meihui",
       "cleanSchedule": {
         "cron": "0 30 4 * * *"
       }
@@ -132,8 +132,8 @@
       "filesRotateByHour": null,
       "hourDelimiter": "-",
       "filesRotateBySize": [
-        "D:\\code\\node\\pinwall_pro_local\\logs\\pinwall-pro-local-server\\-web.log",
-        "D:\\code\\node\\pinwall_pro_local\\logs\\pinwall-pro-local-server\\egg-web.log"
+        "D:\\code\\node\\meihui\\logs\\meihui\\-web.log",
+        "D:\\code\\node\\meihui\\logs\\meihui\\egg-web.log"
       ],
       "maxFileSize": 322122547.2,
       "maxFiles": 10,
@@ -142,14 +142,14 @@
     },
     "static": {
       "prefix": "/public/",
-      "dir": "D:\\code\\node\\pinwall_pro_local\\app\\public",
+      "dir": "D:\\code\\node\\meihui\\app\\public",
       "dynamic": true,
       "preload": false,
       "buffer": false,
       "maxFiles": 1000
     },
     "view": {
-      "root": "D:\\code\\node\\pinwall_pro_local\\app\\view",
+      "root": "D:\\code\\node\\meihui\\app\\view",
       "cache": false,
       "defaultExtension": ".html",
       "defaultViewEngine": "nunjucks",
@@ -157,7 +157,7 @@
     },
     "sequelize": {
       "dialect": "mysql",
-      "database": "pinwall_pro_local",
+      "database": "meihui",
       "host": "192.168.3.110",
       "port": 3306,
       "username": "root",
@@ -209,14 +209,14 @@
       "cache": false
     },
     "env": "local",
-    "name": "pinwall-pro-local-server",
-    "keys": "<String len: 43>",
+    "name": "meihui",
+    "keys": "<String len: 25>",
     "proxy": false,
     "protocolHeaders": "x-forwarded-proto",
     "ipHeaders": "x-forwarded-for",
     "hostHeaders": "",
     "pkg": {
-      "name": "pinwall-pro-local-server",
+      "name": "meihui",
       "version": "1.0.0",
       "description": "",
       "private": true,
@@ -263,8 +263,8 @@
         "node": ">=8.9.0"
       },
       "scripts": {
-        "start": "egg-scripts start --daemon --title=egg-server-pinwall-pro-local-server --port=7009",
-        "stop": "egg-scripts stop --title=egg-server-pinwall-pro-local-server",
+        "start": "egg-scripts start --daemon --title=egg-server-meihui --port=7009",
+        "stop": "egg-scripts stop --title=egg-server-meihui",
         "dev": "egg-bin dev",
         "debug": "egg-bin debug",
         "test": "npm run lint -- --fix && npm run test-local",
@@ -284,9 +284,9 @@
       "author": "",
       "license": "MIT"
     },
-    "baseDir": "D:\\code\\node\\pinwall_pro_local",
+    "baseDir": "D:\\code\\node\\meihui",
     "HOME": "C:\\Users\\dev",
-    "rundir": "D:\\code\\node\\pinwall_pro_local\\run",
+    "rundir": "D:\\code\\node\\meihui\\run",
     "dump": {
       "ignore": "<Set>"
     },
@@ -316,7 +316,7 @@
       }
     },
     "logger": {
-      "dir": "D:\\node_pinwall_pro_local",
+      "dir": "D:\\node_meihui",
       "encoding": "utf8",
       "env": "local",
       "level": "INFO",
@@ -324,7 +324,7 @@
       "disableConsoleAfterReady": false,
       "outputJSON": false,
       "buffer": true,
-      "appLogName": "pinwall-pro-local-server-web.log",
+      "appLogName": "meihui-web.log",
       "coreLogName": "egg-web.log",
       "agentLogName": "egg-agent.log",
       "errorLogName": "common-error.log",
@@ -395,8 +395,8 @@
       "dependencies": [],
       "optionalDependencies": [],
       "env": [],
-      "from": "D:\\code\\node\\pinwall_pro_local\\node_modules\\egg\\config\\plugin.js",
-      "path": "D:\\code\\node\\pinwall_pro_local\\node_modules\\egg-session",
+      "from": "D:\\code\\node\\meihui\\node_modules\\egg\\config\\plugin.js",
+      "path": "D:\\code\\node\\meihui\\node_modules\\egg-session",
       "version": "3.1.0"
     },
     "security": {
@@ -408,8 +408,8 @@
         "session"
       ],
       "env": [],
-      "from": "D:\\code\\node\\pinwall_pro_local\\node_modules\\egg\\config\\plugin.js",
-      "path": "D:\\code\\node\\pinwall_pro_local\\node_modules\\egg-security",
+      "from": "D:\\code\\node\\meihui\\node_modules\\egg\\config\\plugin.js",
+      "path": "D:\\code\\node\\meihui\\node_modules\\egg-security",
       "version": "2.4.1"
     },
     "jsonp": {
@@ -421,8 +421,8 @@
         "security"
       ],
       "env": [],
-      "from": "D:\\code\\node\\pinwall_pro_local\\node_modules\\egg\\config\\plugin.js",
-      "path": "D:\\code\\node\\pinwall_pro_local\\node_modules\\egg-jsonp",
+      "from": "D:\\code\\node\\meihui\\node_modules\\egg\\config\\plugin.js",
+      "path": "D:\\code\\node\\meihui\\node_modules\\egg-jsonp",
       "version": "2.0.0"
     },
     "onerror": {
@@ -434,8 +434,8 @@
         "jsonp"
       ],
       "env": [],
-      "from": "D:\\code\\node\\pinwall_pro_local\\node_modules\\egg\\config\\plugin.js",
-      "path": "D:\\code\\node\\pinwall_pro_local\\node_modules\\egg-onerror",
+      "from": "D:\\code\\node\\meihui\\node_modules\\egg\\config\\plugin.js",
+      "path": "D:\\code\\node\\meihui\\node_modules\\egg-onerror",
       "version": "2.1.0"
     },
     "i18n": {
@@ -444,9 +444,9 @@
       "dependencies": [],
       "optionalDependencies": [],
       "env": [],
-      "from": "D:\\code\\node\\pinwall_pro_local\\config\\plugin.js",
+      "from": "D:\\code\\node\\meihui\\config\\plugin.js",
       "package": "egg-i18n",
-      "path": "D:\\code\\node\\pinwall_pro_local\\node_modules\\egg-i18n",
+      "path": "D:\\code\\node\\meihui\\node_modules\\egg-i18n",
       "version": "2.0.0"
     },
     "watcher": {
@@ -456,8 +456,8 @@
       "dependencies": [],
       "optionalDependencies": [],
       "env": [],
-      "from": "D:\\code\\node\\pinwall_pro_local\\node_modules\\egg\\config\\plugin.js",
-      "path": "D:\\code\\node\\pinwall_pro_local\\node_modules\\egg-watcher",
+      "from": "D:\\code\\node\\meihui\\node_modules\\egg\\config\\plugin.js",
+      "path": "D:\\code\\node\\meihui\\node_modules\\egg-watcher",
       "version": "3.1.0"
     },
     "schedule": {
@@ -467,8 +467,8 @@
       "dependencies": [],
       "optionalDependencies": [],
       "env": [],
-      "from": "D:\\code\\node\\pinwall_pro_local\\node_modules\\egg\\config\\plugin.js",
-      "path": "D:\\code\\node\\pinwall_pro_local\\node_modules\\egg-schedule",
+      "from": "D:\\code\\node\\meihui\\node_modules\\egg\\config\\plugin.js",
+      "path": "D:\\code\\node\\meihui\\node_modules\\egg-schedule",
       "version": "3.5.0"
     },
     "multipart": {
@@ -480,8 +480,8 @@
         "schedule"
       ],
       "env": [],
-      "from": "D:\\code\\node\\pinwall_pro_local\\node_modules\\egg\\config\\plugin.js",
-      "path": "D:\\code\\node\\pinwall_pro_local\\node_modules\\egg-multipart",
+      "from": "D:\\code\\node\\meihui\\node_modules\\egg\\config\\plugin.js",
+      "path": "D:\\code\\node\\meihui\\node_modules\\egg-multipart",
       "version": "2.3.0"
     },
     "development": {
@@ -495,8 +495,8 @@
       "env": [
         "local"
       ],
-      "from": "D:\\code\\node\\pinwall_pro_local\\node_modules\\egg\\config\\plugin.js",
-      "path": "D:\\code\\node\\pinwall_pro_local\\node_modules\\egg-development",
+      "from": "D:\\code\\node\\meihui\\node_modules\\egg\\config\\plugin.js",
+      "path": "D:\\code\\node\\meihui\\node_modules\\egg-development",
       "version": "2.4.1"
     },
     "logrotator": {
@@ -508,8 +508,8 @@
       ],
       "optionalDependencies": [],
       "env": [],
-      "from": "D:\\code\\node\\pinwall_pro_local\\node_modules\\egg\\config\\plugin.js",
-      "path": "D:\\code\\node\\pinwall_pro_local\\node_modules\\egg-logrotator",
+      "from": "D:\\code\\node\\meihui\\node_modules\\egg\\config\\plugin.js",
+      "path": "D:\\code\\node\\meihui\\node_modules\\egg-logrotator",
       "version": "3.0.5"
     },
     "static": {
@@ -519,8 +519,8 @@
       "dependencies": [],
       "optionalDependencies": [],
       "env": [],
-      "from": "D:\\code\\node\\pinwall_pro_local\\node_modules\\egg\\config\\plugin.js",
-      "path": "D:\\code\\node\\pinwall_pro_local\\node_modules\\egg-static",
+      "from": "D:\\code\\node\\meihui\\node_modules\\egg\\config\\plugin.js",
+      "path": "D:\\code\\node\\meihui\\node_modules\\egg-static",
       "version": "2.1.1"
     },
     "view": {
@@ -530,8 +530,8 @@
       "dependencies": [],
       "optionalDependencies": [],
       "env": [],
-      "from": "D:\\code\\node\\pinwall_pro_local\\node_modules\\egg\\config\\plugin.js",
-      "path": "D:\\code\\node\\pinwall_pro_local\\node_modules\\egg-view",
+      "from": "D:\\code\\node\\meihui\\node_modules\\egg\\config\\plugin.js",
+      "path": "D:\\code\\node\\meihui\\node_modules\\egg-view",
       "version": "2.1.0"
     },
     "sequelize": {
@@ -541,8 +541,8 @@
       "dependencies": [],
       "optionalDependencies": [],
       "env": [],
-      "from": "D:\\code\\node\\pinwall_pro_local\\config\\plugin.js",
-      "path": "D:\\code\\node\\pinwall_pro_local\\node_modules\\egg-sequelize",
+      "from": "D:\\code\\node\\meihui\\config\\plugin.js",
+      "path": "D:\\code\\node\\meihui\\node_modules\\egg-sequelize",
       "version": "4.2.0"
     },
     "validate": {
@@ -552,8 +552,8 @@
       "dependencies": [],
       "optionalDependencies": [],
       "env": [],
-      "from": "D:\\code\\node\\pinwall_pro_local\\config\\plugin.js",
-      "path": "D:\\code\\node\\pinwall_pro_local\\node_modules\\egg-validate",
+      "from": "D:\\code\\node\\meihui\\config\\plugin.js",
+      "path": "D:\\code\\node\\meihui\\node_modules\\egg-validate",
       "version": "2.0.2"
     },
     "cors": {
@@ -563,8 +563,8 @@
       "dependencies": [],
       "optionalDependencies": [],
       "env": [],
-      "from": "D:\\code\\node\\pinwall_pro_local\\config\\plugin.js",
-      "path": "D:\\code\\node\\pinwall_pro_local\\node_modules\\egg-cors",
+      "from": "D:\\code\\node\\meihui\\config\\plugin.js",
+      "path": "D:\\code\\node\\meihui\\node_modules\\egg-cors",
       "version": "2.1.2"
     },
     "passport": {
@@ -576,8 +576,8 @@
       ],
       "optionalDependencies": [],
       "env": [],
-      "from": "D:\\code\\node\\pinwall_pro_local\\config\\plugin.js",
-      "path": "D:\\code\\node\\pinwall_pro_local\\node_modules\\egg-passport",
+      "from": "D:\\code\\node\\meihui\\config\\plugin.js",
+      "path": "D:\\code\\node\\meihui\\node_modules\\egg-passport",
       "version": "2.0.1"
     },
     "passportLocal": {
@@ -589,8 +589,8 @@
       ],
       "optionalDependencies": [],
       "env": [],
-      "from": "D:\\code\\node\\pinwall_pro_local\\config\\plugin.js",
-      "path": "D:\\code\\node\\pinwall_pro_local\\node_modules\\egg-passport-local",
+      "from": "D:\\code\\node\\meihui\\config\\plugin.js",
+      "path": "D:\\code\\node\\meihui\\node_modules\\egg-passport-local",
       "version": "1.2.1"
     },
     "elasticsearch": {
@@ -600,8 +600,8 @@
       "dependencies": [],
       "optionalDependencies": [],
       "env": [],
-      "from": "D:\\code\\node\\pinwall_pro_local\\config\\plugin.js",
-      "path": "D:\\code\\node\\pinwall_pro_local\\node_modules\\egg-elasticsearch",
+      "from": "D:\\code\\node\\meihui\\config\\plugin.js",
+      "path": "D:\\code\\node\\meihui\\node_modules\\egg-elasticsearch",
       "version": "1.0.0"
     },
     "nunjucks": {
@@ -614,8 +614,8 @@
       ],
       "optionalDependencies": [],
       "env": [],
-      "from": "D:\\code\\node\\pinwall_pro_local\\config\\plugin.js",
-      "path": "D:\\code\\node\\pinwall_pro_local\\node_modules\\egg-view-nunjucks",
+      "from": "D:\\code\\node\\meihui\\config\\plugin.js",
+      "path": "D:\\code\\node\\meihui\\node_modules\\egg-view-nunjucks",
       "version": "2.2.0"
     }
   }
