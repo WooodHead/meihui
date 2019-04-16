@@ -169,8 +169,10 @@ var index = new Vue({
     created(){
         if(document.cookie.split("=")[1] == "en-us"){
             this.locale = 0;
+            this.mobileCodeText = "Click to get the verification code";
         }else{
             this.locale = 1;
+            this.mobileCodeText = "点击获取验证码";
         }
         this.containerStyle.margin = (document.documentElement.clientHeight - 400 ) / 2 - 120 + "px auto";
         let that = this;
