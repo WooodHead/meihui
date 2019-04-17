@@ -55,7 +55,8 @@ var projects = new Vue({
                             title:res.data,
                             duration:1,
                             onClose(){
-                                window.close();
+                                window.self.close();
+                               window.opener.location.reload();
                             }
                         })
                     }else{
