@@ -39,7 +39,7 @@ class UsersController extends BaseController{
     const ctx = this.ctx;
     try{
       let data = ctx.request.body;
-      if (data.captchaText != this.ctx.session.captcha){
+      if (data.captchaText.toLowerCase() != this.ctx.session.captcha){
         super.failure(ctx.__('verificationCodeError'));
       }
       else{
