@@ -6,7 +6,7 @@ module.exports = app => {
 
   const { INTEGER, STRING, DATE } = app.Sequelize;
 
-  const SmsMessage = app.model.define('smsMessage', {
+  const SmsMessage = app.model.define('sms_message', {
     Id: {
       type: INTEGER,
       allowNull: false,

@@ -134,8 +134,15 @@
     "DeleteWarnning": "删除作业荚及其中的所有作品 (无法恢复，谨慎操作)",
     "cancel": "取消",
 
-
-
+    "updateSuccessful": "更新成功",
+    "updateFailed": "更新失败",
+    "successfulOperation": "操作成功",
+    "createdSuccess": "创建成功",
+    "deletedFailed": "删除失败",
+    "deletedSuccessful": "删除成功",
+    "failedOperation": "操作失败",
+    "hasLiked": "已经点赞",
+    "notLiked": "未点赞",
     "synchronousFailed": "同步失败",
     "noDataNeedToSync": "没有数据需要同步",
     "opFailedOrPodClosed": "操作失败或者作业荚已关闭!",
