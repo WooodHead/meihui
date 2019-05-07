@@ -38,11 +38,12 @@
 				<div class="rememberPwd">
 					<checkbox v-model="single">{{__('RememberMe')}}</checkbox>
 					<!-- <i-button class="wxLoginBtn" type="success" @click="wxlogin" ghost>微信登陆</i-button> -->
+					<i-button class="forgetPwd" type="warning" to="/forgetPwd" ghost>{{__('ForgotPwd')}}?</i-button>
 				</div>
 
 				<input class="submit" type="submit" @click="localStorage" name="submit" value="{{__('LogIn')}}">
 
-				<i-button class="forgetPwd" type="warning" to="/forgetPwd" ghost>{{__('ForgotPwd')}}?</i-button>
+
 			</form>
 			<p style="color:#ed4014;text-align:center;margin-top:20px;">{{message}}</p>
 		</div>

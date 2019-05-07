@@ -2,7 +2,7 @@
 	display: none;
 }
 body{
-    background-color: #EFEFEF;
+    background-color: #fff;
 }
 
 .register_panel{
@@ -14,7 +14,7 @@ body{
 }
 
 .register_panel .title{
-    color: #09bc72;
+    color: #68686b;
     margin: 10px auto;
     height: 40px;
     line-height: 40px;

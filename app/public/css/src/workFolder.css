@@ -2,7 +2,7 @@
 	display: none;
 }
 body{
-    background-color: #EFEFEF;
+    background-color: #fff;
 }
 
 .container .container_header{
@@ -242,7 +242,7 @@ body{
     right: 10px;
     bottom: 40px;
     overflow: hidden;
-    color: #09bc72;
+    color: #68686b;
     margin: 0;
     line-height: 1.5em;
 }
@@ -333,12 +333,12 @@ body{
 .login_panel .register h3{
 	font-weight: normal;
 	font-size: 16px;
-	color: #09bc72;
+	color: #68686b;
 	margin: 15px 0;
 }
 .ivu-modal-header p, .ivu-modal-header-inner{
 	font-size: 18px;
-	color: #09bc72;
+	color: #68686b;
 }
 /* 忘记密码弹出层 */
 .recoverPwd_panel{

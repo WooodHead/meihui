@@ -2,7 +2,7 @@
 	display: none;
 }
 body{
-    background-color: #EFEFEF;
+    background-color: #fff;
 }
 
 .recoverPwd_panel{
@@ -14,7 +14,7 @@ body{
 	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 .recoverPwd_panel .title{
-    color: #09bc72;
+    color: #68686b;
     padding: 0 30px;
     height: 40px;
     line-height: 40px;
@@ -22,7 +22,7 @@ body{
     font-weight: bold;
 }
 .recoverPwd_panel .des{
-    color:#09bc72;width:60%;margin:20px 120px;text-align: left;
+    color:#68686b;width:60%;margin:20px 120px;text-align: left;
 }
 .recoverPwd_panel .code_input{
 	width:200px;
@@ -45,7 +45,7 @@ body{
 	    width: auto;
 	}
 	.recoverPwd_panel .des{
-	    color:#09bc72;width:100%;margin:0 auto;text-align: left;
+	    color:#68686b;width:100%;margin:0 auto;text-align: left;
 	}
 	.recoverPwd_panel .code_input{
 		width:auto;margin-left: 0;

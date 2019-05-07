@@ -2,7 +2,7 @@
 	display: none;
 }
 body{
-	background-color: #efefef;
+	background-color: #fff;
 }
 .upload_project{
 	background: #EFEFEF;
@@ -33,10 +33,10 @@ body{
 	border: #ccc 1px solid;border-bottom: none;    margin-left: -1px;
 }
 .step_nav .step_nav_ul .step_nav_li:hover{
-	color: #09bc72;
+	color: #68686b;
 }
 .step_nav .step_nav_ul .step_nav_li.active{
-	background: #fff;color: #09bc72;
+	background: #fff;color: #68686b;
 }
 
 

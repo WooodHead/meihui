@@ -2,10 +2,10 @@
 	display: none;
 }
 body{
-    background-color: #EFEFEF;
+    background-color: #fff;
 }
 .header .index{
-    background:#222222;
+    background:#b2b2b2;
 }
 .de_project_photowall {
 	position: absolute;
@@ -26,7 +26,7 @@ body{
     position: absolute;
     top: 0;
     left: 0;
-    background: #07af69;
+    background: #b2b2b2;
     padding: 20px;
     box-sizing: border-box;
     overflow: hidden;

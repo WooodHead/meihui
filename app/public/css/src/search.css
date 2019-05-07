@@ -3,10 +3,10 @@
 	display: none;
 }
 body{
-    background-color: #EFEFEF;
+    background-color: #fff;
 }
 .header .search{
-	background: #222222;
+	background: #b2b2b2;
 }
 .container .noResult{
     margin: 20px 30px;
@@ -83,7 +83,7 @@ body{
 }
 .de_card_m .project_info .thumb {
     width: 100%;
-    border-right: #ccc 1px dotted; */
+    border-right: #ccc 1px dotted;
     height: 100%;
 }
 .de_card_m .project_info h4 {
@@ -95,7 +95,7 @@ body{
     right: 20px;
     bottom: 40px;
     overflow: hidden;
-    color: #09bc72;
+    color: #68686b;
     margin: 0;
     line-height: 1.5em;
 }

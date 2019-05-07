@@ -2,13 +2,13 @@
 	display: none;
 }
 body{
-	background: #EFEFEF;
+	background: #fff;
 }
 
 .container h3{
     font-size: 22px;
     text-align: center;
-    color: #09bc72;
+    color: #68686b;
 	margin-top:20px;
 }
 

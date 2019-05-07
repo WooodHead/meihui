@@ -2,7 +2,7 @@
 	display: none;
 }
 body{
-    background-color: #EFEFEF;
+    background-color: #fff;
 }
 
 .container .container_header{
@@ -71,7 +71,7 @@ body{
 .topic_info .topic_title {
     font-size: 14px;
     font-weight: bold;
-    color: #07af69;
+    color: #68686b;
     overflow: hidden;
     margin: 0.8em 0;
     width: 240px;
@@ -125,7 +125,7 @@ body{
     font-size: 0;
     z-index: 1;
     text-align: center;
-    background: repeating-linear-gradient( 45deg, #b1dddd, #b1dddd 10px, #beeeee 10px, #beeeee 20px);
+    background: repeating-linear-gradient( 45deg, #b2b2b2, #b2b2b2 10px, #efefef 10px, #efefef 20px);
     overflow: hidden;
 }
 .de_topic_box .topic_action.topic_closed {
@@ -241,7 +241,7 @@ body{
     right: 10px;
     bottom: 40px;
     overflow: hidden;
-    color: #09bc72;
+    color: #68686b;
     margin: 0;
     line-height: 1.5em;
 }
@@ -332,12 +332,12 @@ body{
 .login_panel .register h3{
 	font-weight: normal;
 	font-size: 16px;
-	color: #09bc72;
+	color: #68686b;
 	margin: 15px 0;
 }
 .ivu-modal-header p, .ivu-modal-header-inner{
 	font-size: 18px;
-	color: #09bc72;
+	color: #68686b;
 }
 /* 忘记密码弹出层 */
 .recoverPwd_panel{

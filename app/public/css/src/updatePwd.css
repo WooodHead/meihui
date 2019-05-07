@@ -2,7 +2,7 @@
 	display: none;
 }
 body{
-    background-color: #EFEFEF;
+    background-color: #fff;
 }
 
 .container{
@@ -19,7 +19,7 @@ body{
     padding-bottom: 60px;
 }
 .updatePwd_panel .title{
-    color: #09bc72;
+    color: #68686b;
     text-align: center;
     height: 40px;
     line-height: 40px;

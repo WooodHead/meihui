@@ -2,10 +2,10 @@
 	display: none;
 }
 body{
-    background-color: #EFEFEF;
+    background-color: #fff;
 }
 .header .topicsAbout{
-    background:#222222;
+    background:#b2b2b2;
 }
 .container .container_header {
     color: rgb(153, 153, 153);
@@ -20,7 +20,7 @@ body{
     height: 140px;
     box-sizing: border-box;
     background: #fff;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
     margin: 20px 30px;
 }
 /* user信息 */
@@ -57,7 +57,7 @@ body{
     font-size: 12px;
     width: 200px;
     text-align: left;
-    color: #666;
+    color: #68686b;
 }
 /* 2018本科毕业设计作品 */
 .de_topic_box .topic_info {
@@ -71,12 +71,12 @@ body{
 .topic_info .created_date {
     font-size: 12px;
     margin: 8px 0;
-    color: #ccc;
+    color: #b2b2b2;
 }
 .topic_info .topic_title {
     font-size: 14px;
     font-weight: bold;
-    color: #07af69;
+    color: #68686b;
     overflow: hidden;
     margin: 0.8em 0;
     width: 240px;
@@ -132,7 +132,7 @@ body{
     font-size: 0;
     z-index: 1;
     text-align: center;
-    background: repeating-linear-gradient( 45deg, #b1dddd, #b1dddd 10px, #beeeee 10px, #beeeee 20px);
+    background: repeating-linear-gradient( 45deg, #b2b2b2, #b2b2b2 10px, #efefef 10px, #efefef 20px);
     overflow: hidden;
 }
 .de_topic_box .topic_closed {

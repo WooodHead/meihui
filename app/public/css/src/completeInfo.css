@@ -2,7 +2,7 @@
 	display: none;
 }
 body{
-    background-color: #EFEFEF;
+    background-color: #fff;
 }
 
 .container{
@@ -21,7 +21,7 @@ body{
 .complete_box h3{
     font-size: 22px;
     text-align: center;
-    color: #09bc72;
+    color: #68686b;
 }
 .completeInfo object svg{
     height: 40px;

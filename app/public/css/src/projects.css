@@ -1,5 +1,5 @@
 body{
-    background:rgba(240, 240, 240, 0.95);
+    background:#fff;
 }
 .close_btn{
     margin: 10px;
@@ -191,7 +191,7 @@ body{
 }
 .comment_box .name {
     text-decoration: none;
-    color: #09bc72;
+    color: #68686b;
     font-size: 14px;
     font-weight: bold;
     vertical-align: middle;
