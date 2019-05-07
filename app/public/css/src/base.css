@@ -57,9 +57,14 @@ img{
     position: absolute;
     background: url('../../images/loading_spinner.png');
     background-repeat: no-repeat;
-    background-position: center;
-    transform: rotateY(35deg);
-    -webkit-transform: rotateY(35deg);
+    /* background-position: center; */
+    /* transform: rotateY(35deg);
+    -webkit-transform: rotateY(35deg); */
+    background-size: 40px 40px;
+}
+.header .pinwall_logo .title{
+    font-size: 20px;
+    margin-left: 5px;
 }
 .header .user_profile{
 	display: flex;
