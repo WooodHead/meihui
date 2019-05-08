@@ -122,6 +122,10 @@
     "Who’sSampleReels": "’s sample reels",
     "CreateOrSetPod": "Create or set a new pod",
     "EngineRules": "Enter the relevant work id and concatenate it with a semicolon comma",
+    "Major":"Major",
+    "ClothingApparel":"Clothing and apparel",
+    "IndustrialDesign":"Industrial design",
+    "ProducDesign":"Product design",
     "ForgotPwdTitle": "Can't remember the password?Please input your mobile phone number, and then input SMS verification code to help you retrieve your password.",
 
     "EnterPodTitle": "Please enter the name of the job pod",

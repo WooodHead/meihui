@@ -9,13 +9,13 @@ var index = new Vue({
             drawerShow:false,
             terms_value:"",
             terms_arr:[],
-            formItem:{
-                type:"",
+            formItem:{      
                 name:"",
                 terms:[],
+                major:0,        //专业
                 description:"",
                 status:0,
-                jobTag:1,
+                jobTag:1
             },
             locale:1    //中英文 1：中文
         }
@@ -35,6 +35,9 @@ var index = new Vue({
                 this.terms_arr.push(subterm);
                 this.terms_value = "";
             }
+        },
+        majorChange(value){
+            this.formItem.major = value;
         },
         deleteTerm(index){
             this.terms_arr.splice(index,1);

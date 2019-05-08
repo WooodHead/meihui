@@ -191,6 +191,9 @@ body{
 		margin-left:20px;
 		width: 100px;
 	}
+	.majorItem{
+		display: none;
+	}
 }
 .footer {
 	padding: 5px 0;

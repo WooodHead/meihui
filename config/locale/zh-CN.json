@@ -122,6 +122,10 @@
     "Who’sSampleReels": "的作品集",
     "CreateOrSetPod": "新建或设置作业荚",
     "EngineRules": "输入相关作品id并以半角逗号拼接",
+    "Major":"专业",
+    "ClothingApparel":"服装与服饰",
+    "IndustrialDesign":"工业设计",
+    "ProducDesign":"产品设计",
     "ForgotPwdTitle": "不记得密码了？请输入您的手机号，随后输入短信验证码帮您找回密码。",
 
     "EnterPodTitle": "请输入作业荚名称",

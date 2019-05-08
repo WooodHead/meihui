@@ -12,13 +12,13 @@ var index = new Vue({
                 minHeight:""
             },
             // 数据请求
-            aoData:{limit:10,jobTag:2,offset:0,status:-1,userId:-1},
+            aoData:{limit:10,jobTag:2,offset:0,status:-1,userId:-1,major:0},
             dataList:[],
             scrollModel:true,
             //右侧抽屉
             drawerShow:false,
             searchValue:"",          //搜索值
-            searchData:{limit:10,jobTag:2,offset:0,status:-1,userId:-1,keyword:""}
+            searchData:{limit:10,jobTag:2,offset:0,status:-1,userId:-1,keyword:"",major:0}
         }
     },
     methods: {
@@ -76,6 +76,17 @@ var index = new Vue({
             this.searchData.status = 1;
             this.searchData.userId = -1;
             this.searchData.offset = 0;
+            if (this.searchValue) {
+                getSearchData(this, this.searchData);
+            } else {
+                getData(this, this.aoData);
+            }
+        },
+        majorChange(value){
+            this.aoData.offset = 0;
+            this.searchData.offset = 0;
+            this.aoData.major = value;
+            this.searchData.major = value;
             if (this.searchValue) {
                 getSearchData(this, this.searchData);
             } else {

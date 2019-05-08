@@ -50,6 +50,9 @@ var index = new Vue({
                 this.terms_arr.splice(index,1);
             }
         },
+        majorChange(value){
+            this.formItem.major = value;
+        },
         updateTopicStatus(){
             let newstatus = new String();
             if (this.formItem.status == 0) {

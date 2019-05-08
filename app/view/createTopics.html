@@ -20,6 +20,13 @@
                 <form-item label="{{__('Title')}}">
                     <i-input v-model="formItem.name" placeholder="{{__('EnterTitle')}}"></i-input>
                 </form-item>
+				<form-item label="{{__('Major')}}">
+					<i-select :value="formItem.major" style="width:300px" @on-change="majorChange">
+				        <i-option :value="1" :key="1">{{__('ClothingApparel')}}</i-option>
+						<i-option :value="2" :key="2">{{__('IndustrialDesign')}}</i-option>
+		                <i-option :value="3" :key="3">{{__('ProducDesign')}}</i-option>
+				    </i-select>
+                </form-item>
                 <form-item label="{{__('Label')}}">
                     <i-button type="success" size="small" icon="ios-brush" @click="deleteTerm(index)" v-for="(item,index) in terms_arr" style="margin-right:5px;"><span v-text="item.name"></span></i-button>
                 </form-item>

@@ -178,7 +178,7 @@ body{
 	}
 
 }
-@media screen and (max-width: 540px){  /* 当屏幕尺寸小于1200px时，应用下面的CSS样式 */
+@media screen and (max-width: 540px){  /* 当屏幕尺寸小于540px时，应用下面的CSS样式 */
 
 	.container_header .title {
 	    display: none;
@@ -190,6 +190,9 @@ body{
 	.container_header .ivu-input-wrapper{
 		margin-left:20px;
 		width: 100px;
+	}
+	.majorItem{
+		display: none;
 	}
 }
 .footer {
