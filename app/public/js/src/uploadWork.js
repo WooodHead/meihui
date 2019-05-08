@@ -404,7 +404,7 @@ var container = new Vue({
             this.stepThreeActive = false;
         },
         goStep2(){
-            // if (this.dataItem.name && this.dataItem.description && this.dataItem.profileImage) {
+            if (this.dataItem.name && this.dataItem.description && this.dataItem.profileImage) {
                 if(this.dataItem.Id){
                     this.dataItem.addTerms = this.addTerms;
                     this.dataItem.deleteTerms = this.deleteTerms;
@@ -413,9 +413,9 @@ var container = new Vue({
                 this.stepTwoActive = true;
                 this.stepThreeActive = false;
                 this.dataItem.terms = this.terms_arr;
-            // }else{
-            //     this.$Notice.error({title: this.locale ? "请输入必填信息！" : "Please enter required information!"});
-            // }
+            }else{
+                this.$Notice.error({title: this.locale ? "请输入必填信息！" : "Please enter required information!"});
+            }
 
         },
         goStep3(){
