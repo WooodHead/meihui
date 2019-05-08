@@ -197,7 +197,7 @@ var container = new Vue({
                         xhr.addEventListener("progress", function (event) {
                             if (event.lengthComputable) {
                                 var percentComplete = event.loaded / event.total;
-                                that.file_otherinof_arr[container.which_artifact_assets].progress = percentComplete * 100;
+                                that.file_otherinof_arr[that.which_artifact_assets].progress = percentComplete * 100;
                             }
                         }, false);
                         return xhr;
@@ -245,7 +245,7 @@ var container = new Vue({
                         xhr.addEventListener("progress", function (event) {
                             if (event.lengthComputable) {
                                 var percentComplete = event.loaded / event.total;
-                                that.file_otherinof_arr[container.which_artifact_assets].progress = percentComplete * 100;
+                                that.file_otherinof_arr[that.which_artifact_assets].progress = percentComplete * 100;
                             }
                         }, false);
                         return xhr;
@@ -293,7 +293,7 @@ var container = new Vue({
                         xhr.addEventListener("progress", function (event) {
                             if (event.lengthComputable) {
                                 var percentComplete = event.loaded / event.total;
-                                that.file_otherinof_arr[container.which_artifact_assets].progress = percentComplete * 100;
+                                that.file_otherinof_arr[that.which_artifact_assets].progress = percentComplete * 100;
                             }
                         }, false);
                         return xhr;
