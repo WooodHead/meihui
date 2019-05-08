@@ -69,6 +69,7 @@
     "Replace": "Replace",
     "BindMedia": "Bind media file",
     "Optional": "(Optional)",
+    "FileSize":"(The attachment size is not more than 300M)",
     "AddFiles": "Add files",
     "MP4": "MP4",
     "PDF": "PDF",

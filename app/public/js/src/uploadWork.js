@@ -178,129 +178,144 @@ var container = new Vue({
             let that = this;
             let file = files.target.files[0];
             let fileTrueName = files.target.files[0].name;
-            this.file_otherinof_arr[this.which_artifact_assets].fileTrueName = files.target.files[0].name;
-            this.$Notice.success({title:this.locale ? '上传中···' : "uploading..."});
+            let fileSize = files.target.files[0].size/1048576;
+            if (fileSize <= 300) {
+                this.file_otherinof_arr[this.which_artifact_assets].fileTrueName = files.target.files[0].name;
+                this.$Notice.success({title:this.locale ? '上传中···' : "uploading..."});
 
-            let formdata = new FormData();
-            formdata.append('head', file);
-            $.ajax({
-                url: config.ajaxUrls.uploadFile.replace(":type",4),
-                type: 'POST',
-                cache: false,
-                processData: false,
-                contentType: false,
-                data: formdata,
-                xhr: function () {
-                    var xhr = new window.XMLHttpRequest();
-                    xhr.addEventListener("progress", function (event) {
-                        if (event.lengthComputable) {
-                            var percentComplete = event.loaded / event.total;
-                            that.file_otherinof_arr[container.which_artifact_assets].progress = percentComplete * 100;
+                let formdata = new FormData();
+                formdata.append('head', file);
+                $.ajax({
+                    url: config.ajaxUrls.uploadFile.replace(":type",4),
+                    type: 'POST',
+                    cache: false,
+                    processData: false,
+                    contentType: false,
+                    data: formdata,
+                    xhr: function () {
+                        var xhr = new window.XMLHttpRequest();
+                        xhr.addEventListener("progress", function (event) {
+                            if (event.lengthComputable) {
+                                var percentComplete = event.loaded / event.total;
+                                that.file_otherinof_arr[container.which_artifact_assets].progress = percentComplete * 100;
+                            }
+                        }, false);
+                        return xhr;
+                    },
+                    success(res){
+                        if(res.status == 200){
+                            that.$Notice.success({title:that.locale ? '上传成功！' : 'Successful operation!'});
+                            that.step2_between_arr[that.which_artifact_assets].position = that.which_artifact_assets;
+                            that.step2_between_arr[that.which_artifact_assets].type = 4;
+                            that.step2_between_arr[that.which_artifact_assets].mediaFile = res.fileName;
+                            that.step2_between_arr[that.which_artifact_assets].viewUrl = res.fileName;
+                            that.step2_between_arr[that.which_artifact_assets].filename = files.target.files[0].name;
+                        }else if(res.status == 500){
+                            that.$Notice.error({title: that.locale ? "上传出错" : "Operation failed!"});
+                        }else if(res.status == 999){
+                            that.$Notice.error({title:res.data.message});
                         }
-                    }, false);
-                    return xhr;
-                },
-                success(res){
-                    if(res.status == 200){
-                        that.$Notice.success({title:that.locale ? '上传成功！' : 'Successful operation!'});
-                        that.step2_between_arr[that.which_artifact_assets].position = that.which_artifact_assets;
-                        that.step2_between_arr[that.which_artifact_assets].type = 4;
-                        that.step2_between_arr[that.which_artifact_assets].mediaFile = res.fileName;
-                        that.step2_between_arr[that.which_artifact_assets].viewUrl = res.fileName;
-                        that.step2_between_arr[that.which_artifact_assets].filename = files.target.files[0].name;
-                    }else if(res.status == 500){
-                        that.$Notice.error({title: that.locale ? "上传出错" : "Operation failed!"});
-                    }else if(res.status == 999){
-                        that.$Notice.error({title:res.data.message});
                     }
-                }
-            })
+                })
+            }else{
+                this.$Notice.error({title:this.locale ? "附件内存过大，请重新选择！" : "Attachment memory is too large, please upload again!"});
+            }
         },
         step2_upload_PDF_change(files){
             let that = this;
             let file = files.target.files[0];
             let fileTrueName = files.target.files[0].name;
-            this.file_otherinof_arr[this.which_artifact_assets].fileTrueName = files.target.files[0].name;
+            let fileSize = files.target.files[0].size/1048576;
+            if (fileSize <= 300) {
+                this.file_otherinof_arr[this.which_artifact_assets].fileTrueName = files.target.files[0].name;
 
-            this.$Notice.success({title:this.locale ? '上传中···' : "uploading..."});
+                this.$Notice.success({title:this.locale ? '上传中···' : "uploading..."});
 
-            let formdata = new FormData();
-            formdata.append('head', file);
-            $.ajax({
-                url: config.ajaxUrls.uploadFile.replace(":type",2),
-                type: 'POST',
-                cache: false,
-                processData: false,
-                contentType: false,
-                data: formdata,
-                xhr: function () {
-                    var xhr = new window.XMLHttpRequest();
-                    xhr.addEventListener("progress", function (event) {
-                        if (event.lengthComputable) {
-                            var percentComplete = event.loaded / event.total;
-                            that.file_otherinof_arr[container.which_artifact_assets].progress = percentComplete * 100;
+                let formdata = new FormData();
+                formdata.append('head', file);
+                $.ajax({
+                    url: config.ajaxUrls.uploadFile.replace(":type",2),
+                    type: 'POST',
+                    cache: false,
+                    processData: false,
+                    contentType: false,
+                    data: formdata,
+                    xhr: function () {
+                        var xhr = new window.XMLHttpRequest();
+                        xhr.addEventListener("progress", function (event) {
+                            if (event.lengthComputable) {
+                                var percentComplete = event.loaded / event.total;
+                                that.file_otherinof_arr[container.which_artifact_assets].progress = percentComplete * 100;
+                            }
+                        }, false);
+                        return xhr;
+                    },
+                    success(res){
+                        if(res.status == 200){
+                            that.$Notice.success({title:that.locale ? '上传成功！' : 'Successful operation!'});
+                            that.step2_between_arr[that.which_artifact_assets].position = that.which_artifact_assets;
+                            that.step2_between_arr[that.which_artifact_assets].type = 2;
+                            that.step2_between_arr[that.which_artifact_assets].mediaFile = res.fileName;
+                            that.step2_between_arr[that.which_artifact_assets].viewUrl = res.fileName;
+                            that.step2_between_arr[that.which_artifact_assets].filename = files.target.files[0].name;
+                        }else if(res.status == 500){
+                            that.$Notice.error({title: that.locale ? "上传出错" : "Operation failed!"});
+                        }else if(res.status == 999){
+                            that.$Notice.error({title:res.data.message});
                         }
-                    }, false);
-                    return xhr;
-                },
-                success(res){
-                    if(res.status == 200){
-                        that.$Notice.success({title:that.locale ? '上传成功！' : 'Successful operation!'});
-                        that.step2_between_arr[that.which_artifact_assets].position = that.which_artifact_assets;
-                        that.step2_between_arr[that.which_artifact_assets].type = 2;
-                        that.step2_between_arr[that.which_artifact_assets].mediaFile = res.fileName;
-                        that.step2_between_arr[that.which_artifact_assets].viewUrl = res.fileName;
-                        that.step2_between_arr[that.which_artifact_assets].filename = files.target.files[0].name;
-                    }else if(res.status == 500){
-                        that.$Notice.error({title: that.locale ? "上传出错" : "Operation failed!"});
-                    }else if(res.status == 999){
-                        that.$Notice.error({title:res.data.message});
                     }
-                }
-            })
+                })
+            }else{
+                this.$Notice.error({title:this.locale ? "附件内存过大，请重新选择！" : "Attachment memory is too large, please upload again!"});
+            }
         },
         step2_upload_ZIP_change(files){
             let that = this;
             let file = files.target.files[0];
             let fileTrueName = files.target.files[0].name;
-            this.file_otherinof_arr[this.which_artifact_assets].fileTrueName = files.target.files[0].name;
+            let fileSize = files.target.files[0].size/1048576;
+            if (fileSize <= 300) {
+                this.file_otherinof_arr[this.which_artifact_assets].fileTrueName = files.target.files[0].name;
 
-            this.$Notice.success({title:this.locale ? '上传中···' : "uploading..."});
+                this.$Notice.success({title:this.locale ? '上传中···' : "uploading..."});
 
-            let formdata = new FormData();
-            formdata.append('head', file);
-            $.ajax({
-                url: config.ajaxUrls.uploadFile.replace(":type",3),
-                type: 'POST',
-                cache: false,
-                processData: false,
-                contentType: false,
-                data: formdata,
-                xhr: function () {
-                    var xhr = new window.XMLHttpRequest();
-                    xhr.addEventListener("progress", function (event) {
-                        if (event.lengthComputable) {
-                            var percentComplete = event.loaded / event.total;
-                            that.file_otherinof_arr[container.which_artifact_assets].progress = percentComplete * 100;
+                let formdata = new FormData();
+                formdata.append('head', file);
+                $.ajax({
+                    url: config.ajaxUrls.uploadFile.replace(":type",3),
+                    type: 'POST',
+                    cache: false,
+                    processData: false,
+                    contentType: false,
+                    data: formdata,
+                    xhr: function () {
+                        var xhr = new window.XMLHttpRequest();
+                        xhr.addEventListener("progress", function (event) {
+                            if (event.lengthComputable) {
+                                var percentComplete = event.loaded / event.total;
+                                that.file_otherinof_arr[container.which_artifact_assets].progress = percentComplete * 100;
+                            }
+                        }, false);
+                        return xhr;
+                    },
+                    success(res){
+                        if(res.status == 200){
+                            that.$Notice.success({title:that.locale ? '上传成功！' : 'Successful operation!'});
+                            that.step2_between_arr[that.which_artifact_assets].position = that.which_artifact_assets;
+                            that.step2_between_arr[that.which_artifact_assets].type = 3;
+                            that.step2_between_arr[that.which_artifact_assets].mediaFile = res.fileName;
+                            that.step2_between_arr[that.which_artifact_assets].viewUrl = res.fileName;
+                            that.step2_between_arr[that.which_artifact_assets].filename = files.target.files[0].name;
+                        }else if(res.status == 500){
+                            that.$Notice.error({title: that.locale ? "上传出错" : "Operation failed!"});
+                        }else if(res.status == 999){
+                            that.$Notice.error({title:res.data.message});
                         }
-                    }, false);
-                    return xhr;
-                },
-                success(res){
-                    if(res.status == 200){
-                        that.$Notice.success({title:that.locale ? '上传成功！' : 'Successful operation!'});
-                        that.step2_between_arr[that.which_artifact_assets].position = that.which_artifact_assets;
-                        that.step2_between_arr[that.which_artifact_assets].type = 3;
-                        that.step2_between_arr[that.which_artifact_assets].mediaFile = res.fileName;
-                        that.step2_between_arr[that.which_artifact_assets].viewUrl = res.fileName;
-                        that.step2_between_arr[that.which_artifact_assets].filename = files.target.files[0].name;
-                    }else if(res.status == 500){
-                        that.$Notice.error({title: that.locale ? "上传出错" : "Operation failed!"});
-                    }else if(res.status == 999){
-                        that.$Notice.error({title:res.data.message});
                     }
-                }
-            })
+                })
+            }else{
+                this.$Notice.error({title:this.locale ? "附件内存过大，请重新选择！" : "Attachment memory is too large, please upload again!"});
+            }
         },
         /**
          * 添加标签
@@ -389,7 +404,7 @@ var container = new Vue({
             this.stepThreeActive = false;
         },
         goStep2(){
-            if (this.dataItem.name && this.dataItem.description && this.dataItem.profileImage) {
+            // if (this.dataItem.name && this.dataItem.description && this.dataItem.profileImage) {
                 if(this.dataItem.Id){
                     this.dataItem.addTerms = this.addTerms;
                     this.dataItem.deleteTerms = this.deleteTerms;
@@ -398,9 +413,9 @@ var container = new Vue({
                 this.stepTwoActive = true;
                 this.stepThreeActive = false;
                 this.dataItem.terms = this.terms_arr;
-            }else{
-                this.$Notice.error({title: this.locale ? "请输入必填信息！" : "Please enter required information!"});
-            }
+            // }else{
+            //     this.$Notice.error({title: this.locale ? "请输入必填信息！" : "Please enter required information!"});
+            // }
 
         },
         goStep3(){
