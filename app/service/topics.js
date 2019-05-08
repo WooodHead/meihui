@@ -5,7 +5,7 @@ const path = require('path');
 
 class Topics extends Service {
 
-  async list({ offset = 0, limit = 10,jobTag = 0, subLimit = 10, status = 0,userId=0 }) {
+  async list({ offset = 0, limit = 10,jobTag = 0, subLimit = 10, status = 0,userId = 0, major = 0, }) {
     let resultObj = await this.ctx.model.Topics.listTopics({
       offset,
       limit,
@@ -13,6 +13,7 @@ class Topics extends Service {
       subLimit,
       status,
       userId,
+      major,
     });
 
     const helper = this.ctx.helper;

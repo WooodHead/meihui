@@ -30,6 +30,11 @@ module.exports  = app => {
       allowNull: false,
       defaultValue: '0'
     },
+    major: {
+      type: INTEGER,
+      allowNull: false,
+      defaultValue: '0'
+    },
     createAt: {
       type: DATE,
       allowNull: false,
@@ -65,7 +70,7 @@ module.exports  = app => {
     });
   };
 
-  Topics.listTopics = async function ({ offset = 0, limit = 10, jobTag = 0, subLimit = 0,status = 0,userId = 0 }) {
+  Topics.listTopics = async function ({ offset = 0, limit = 10, jobTag = 0, subLimit = 0,status = 0,userId = 0, major = 0}) {
 
     let condition = {
       offset,
@@ -97,6 +102,11 @@ module.exports  = app => {
     if (jobTag != 0){
       condition.where.jobTag = jobTag;
       countCondition.where.jobTag = jobTag;
+    }
+
+    if (major != 0){
+      condition.where.major = major;
+      countCondition.where.major = major;
     }
 
     if (status != -1){

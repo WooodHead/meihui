@@ -16,6 +16,7 @@ class TopicsController extends BaseController{
       subLimit: ctx.helper.parseInt(ctx.query.subLimit),
       status: ctx.helper.parseInt(ctx.query.status),
       userId: ctx.helper.parseInt(ctx.query.userId),
+      major: ctx.helper.parseInt(ctx.query.major),
     };
     if (query.userId == 0 && ctx.user){
         query.userId = ctx.user.Id;
