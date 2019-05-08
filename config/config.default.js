@@ -91,6 +91,8 @@ module.exports = appInfo => {
   };
 
   config.multipart = {
+    fields: 50,//表单上传字段限制的个数
+    fileSize: '300mb',//文件上传的大小限制
     fileExtensions: [ '.pdf' ] // 增加对 pdf 扩展名的文件支持
   };
 

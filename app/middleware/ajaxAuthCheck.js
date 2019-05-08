@@ -6,7 +6,7 @@ module.exports = () => {
       ctx.body = {
         success: true,
         status: 999,
-        data: ctx__('noAuthAndLogin'),
+        data: ctx.__('noAuthAndLogin'),
       };
     }
 
