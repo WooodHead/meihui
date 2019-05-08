@@ -9,7 +9,7 @@ var index = new Vue({
             drawerShow:false,
             terms_value:"",
             terms_arr:[],
-            formItem:{      
+            formItem:{
                 name:"",
                 terms:[],
                 major:0,        //专业

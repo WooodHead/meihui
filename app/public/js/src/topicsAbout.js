@@ -12,6 +12,7 @@ var index = new Vue({
                 minHeight:""
             },
             // 数据请求
+            major:0,
             aoData:{limit:10,jobTag:2,offset:0,status:-1,userId:-1,major:0},
             dataList:[],
             scrollModel:true,
@@ -85,6 +86,7 @@ var index = new Vue({
         majorChange(value){
             this.aoData.offset = 0;
             this.searchData.offset = 0;
+            this.major = value;
             this.aoData.major = value;
             this.searchData.major = value;
             if (this.searchValue) {

@@ -16,6 +16,7 @@ var index = new Vue({
             checkMyType:"text",
             //右侧抽屉
             drawerShow:false,
+            major:0,
             searchData:{limit:10,jobTag:1,offset:0,status:-1,userId:-1,keyword:"",major:0}
         }
     },
@@ -75,6 +76,7 @@ var index = new Vue({
         majorChange(value){
             this.aoData.offset = 0;
             this.searchData.offset = 0;
+            this.major = value;
             this.aoData.major = value;
             this.searchData.major = value;
             if (this.searchValue) {

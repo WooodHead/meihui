@@ -17,20 +17,23 @@
 	<div class="container" :style="containerStyle">
 		<div class="container_header">
 			<div class="title" style="height: 35px;line-height: 35px;text-align: right;width: 170px;">
-				{{__('Course')}}:
+				{{__('Major')}}:&nbsp;&nbsp;&nbsp;
 			</div>
-			<i-button :type="checkAllType" @click="checkAll">{{__('All')}}</i-button>
-			<i-button :type="checkOpenType" @click="checkOpen">{{__('Open')}}</i-button>
-			<i-button :type="checkCloseType" @click="checkClose">{{__('Closed')}}</i-button>
-			<i-button :type="checkMyType" @click="checkMy" v-if="'{{user.Id}}'">{{__('MyCreate')}}</i-button>
 			<div class="majorItem">
-				<i-select style="width:150px" @on-change="majorChange" placeholder="{{__('Major')}}">
+				<i-select :value="major" style="width:150px" @on-change="majorChange" placeholder="{{__('Major')}}">
 					<i-option :value="0" :key="0">{{__('All')}}</i-option>
 					<i-option :value="1" :key="1">{{__('ClothingApparel')}}</i-option>
 					<i-option :value="2" :key="2">{{__('IndustrialDesign')}}</i-option>
 					<i-option :value="3" :key="3">{{__('ProducDesign')}}</i-option>
 				</i-select>
 			</div>
+			<div class="title" style="height: 35px;line-height: 35px;text-align: right;width: 170px;">
+				{{__('Course')}}:&nbsp;&nbsp;&nbsp;
+			</div>
+			<i-button :type="checkAllType" @click="checkAll">{{__('All')}}</i-button>
+			<i-button :type="checkOpenType" @click="checkOpen">{{__('Open')}}</i-button>
+			<i-button :type="checkCloseType" @click="checkClose">{{__('Closed')}}</i-button>
+			<i-button :type="checkMyType" @click="checkMy" v-if="'{{user.Id}}'">{{__('MyCreate')}}</i-button>
 			<div class="">
 				<i-input v-model="searchValue" prefix="ios-search" @on-enter="searchTopics" placeholder="{{__('EnterKeyword')}}"/>
 			</div>
