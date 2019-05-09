@@ -13,7 +13,7 @@ class SmsUtils{
 
     let params = {
       "RegionId": "cn-hangzhou",
-      "SignName": "图钉墙",
+      "SignName": "美荟",
       "phoneNumbers":smsMessage.mobile,
     }
 
@@ -42,7 +42,7 @@ class SmsUtils{
     else if (type == 6){
       params.TemplateCode = 'SMS_70920306'; //身份验证验证码
     }
-    params.TemplateParam = `{"code":"${smsMessage.code}","product":"图钉墙"}`;
+    params.TemplateParam = `{"code":"${smsMessage.code}","product":"美荟"}`;
 
     let data = client.request('SendSms', params, requestOption).then((result) => {
       return result;
