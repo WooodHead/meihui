@@ -16,11 +16,11 @@
 	<div class="container" :style="containerStyle">
         <h4 class="title">{{__('CreateOrSetPod')}}</h4>
         <div class="topic_form">
-            <i-form :model="formItem" :label-width="80" >
-                <form-item label="{{__('Title')}}">
+            <i-form :model="formItem" ref="formItem" :label-width="80" :rules="ruleValidate">
+                <form-item label="{{__('Title')}}" prop="name">
                     <i-input v-model="formItem.name" placeholder="{{__('EnterTitle')}}"></i-input>
                 </form-item>
-				<form-item label="{{__('Major')}}">
+				<form-item label="{{__('Major')}}" prop="major">
 					<i-select :value="formItem.major" style="width:300px" @on-change="majorChange">
 				        <i-option :value="1" :key="1">{{__('ClothingApparel')}}</i-option>
 						<i-option :value="2" :key="2">{{__('IndustrialDesign')}}</i-option>
@@ -33,11 +33,11 @@
                 <form-item label="{{__('AddLabels')}}">
                     <i-input v-model="terms_value" @on-blur="createTerm" @on-enter="createTerm" placeholder="{{__('EnterLabel')}}"></i-input>
                 </form-item>
-                <form-item label="{{__('Description')}}">
+                <form-item label="{{__('Description')}}" prop="description">
                     <i-input v-model="formItem.description" placeholder="{{__('EnterDescription')}}"></i-input>
                 </form-item>
                 <form-item>
-                    <i-button @click="submitData" type="success">{{__('Submit')}}</i-button>
+                    <i-button @click="submitData('formItem')" type="success">{{__('Submit')}}</i-button>
                 </form-item>
             <i-form>
         </div>

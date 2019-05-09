@@ -12,10 +12,15 @@ var index = new Vue({
             formItem:{
                 name:"",
                 terms:[],
-                major:0,        //专业
+                major:"0",        //专业
                 description:"",
                 status:0,
                 jobTag:1
+            },
+            ruleValidate:{
+                name:[{required: true, message: '作业荚名称不能为空', trigger: 'blur'}],
+                major:[{ required: true, type: 'number', message: '专业不能为空', trigger: 'change'}],
+                description:[{required: true, message: '作业荚描述不能为空', trigger: 'blur'}],
             },
             locale:1    //中英文 1：中文
         }
@@ -42,32 +47,38 @@ var index = new Vue({
         deleteTerm(index){
             this.terms_arr.splice(index,1);
         },
-        submitData(){
+        submitData(name){
             let that = this;
-            this.$Loading.start();
             this.formItem.terms = this.terms_arr;
-            $.ajax({
-                url: config.ajaxUrls.getTopicsData,
-                type: 'POST',
-                data: this.formItem,
-                success:function(res){
-                    if (res.status == 200) {
-                        that.$Loading.finish();
-                        that.$Notice.success({
-                            title:that.locale ? "作业荚创建成功，2秒后返回" : "Successful, return 2 seconds later",
-                            duration:2,
-                            onClose:function(){
-                                if (that.formItem.jobTag == 1) {
-                                    window.location.href = "/courseProjects";
-                                } else {
-                                    window.location.href = "/graduationProjects";
-                                }
+            this.$refs[name].validate((valid) => {
+                if (valid) {
+                    this.$Loading.start();
+                    $.ajax({
+                        url: config.ajaxUrls.getTopicsData,
+                        type: 'POST',
+                        data: this.formItem,
+                        success:function(res){
+                            if (res.status == 200) {
+                                that.$Loading.finish();
+                                that.$Notice.success({
+                                    title:that.locale ? "作业荚创建成功，2秒后返回" : "Successful, return 2 seconds later",
+                                    duration:2,
+                                    onClose:function(){
+                                        if (that.formItem.jobTag == 1) {
+                                            window.location.href = "/courseProjects";
+                                        } else {
+                                            window.location.href = "/graduationProjects";
+                                        }
+                                    }
+                                })
+                            }else{
+                                that.$Loading.error();
+                                that.$Notice.error({title:res.data});
                             }
-                        })
-                    }else{
-                        that.$Loading.error();
-                        that.$Notice.error({title:res.data});
-                    }
+                        }
+                    })
+                } else {
+                    this.$Notice.error({title:this.locale ? "请输入必填项!" : "Please enter required fields!"});
                 }
             })
         }
