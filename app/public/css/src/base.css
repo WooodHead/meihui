@@ -45,8 +45,8 @@ img{
     display: flex;flex-direction: row;align-items: center;justify-content: left;color: white;font-size: 18px;font-weight: bold;
 }
 .header .pinwall_logo div{
-    width: 40px;
-    height: 40px;
+    width: 50px;
+    height: 50px;
 }
 .header .pinwall_logo .div1{
     position: relative;
@@ -60,7 +60,7 @@ img{
     /* background-position: center; */
     /* transform: rotateY(35deg);
     -webkit-transform: rotateY(35deg); */
-    background-size: 40px 40px;
+    background-size: 50px 50px;
 }
 .header .pinwall_logo .title{
     font-size: 20px;
