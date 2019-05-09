@@ -3,7 +3,7 @@
     "login": "帐号",
     "createdAt": "注册时间",
     "createSuccess": "创建成功",
-
+    "createdFailed":"创建失败",
     "Home": "首页",
     "GraduateCourse": "毕设展",
     "Course": "作业荚",

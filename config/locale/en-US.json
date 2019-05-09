@@ -3,6 +3,7 @@
     "login": "phone",
     "createdAt": "create",
     "createSuccess": "creat success",
+    "createdFailed":"creat failure",
 
     "Home": "Home",
     "GraduateCourse": "Graduate course",
