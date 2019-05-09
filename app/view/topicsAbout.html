@@ -16,7 +16,7 @@
 {% block container %}
 	<div class="container" :style="containerStyle">
 		<div class="container_header">
-			<div class="title" style="height: 35px;line-height: 35px;text-align: right;width: 170px;">
+			<div class="title" style="height: 35px;line-height: 35px;text-align: right;width: 70px;">
 				{{__('Major')}}:&nbsp;&nbsp;&nbsp;
 			</div>
 			<div class="majorItem">
@@ -27,7 +27,7 @@
 					<i-option :value="3" :key="3">{{__('ProducDesign')}}</i-option>
 				</i-select>
 			</div>
-			<div class="title" style="height: 35px;line-height: 35px;text-align: right;width: 170px;">
+			<div class="title" style="height: 35px;line-height: 35px;text-align: right;width: 70px;">
 				{{__('Course')}}:&nbsp;&nbsp;&nbsp;
 			</div>
 			<i-button :type="checkAllType" @click="checkAll">{{__('All')}}</i-button>
