@@ -87,7 +87,7 @@ body{
     width: 40px;
     height: 40px;
     overflow: hidden;
-    border-radius: 18px;
+    border-radius: 20px;
     display: block;
 }
 .project_detail .user_info .name {
@@ -181,7 +181,7 @@ body{
     width: 40px;
     height: 40px;
     overflow: hidden;
-    border-radius: 18px;
+    border-radius: 20px;
     margin: 5px auto;
     display: block;
     background: #999;
