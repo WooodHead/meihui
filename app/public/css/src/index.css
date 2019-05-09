@@ -38,7 +38,7 @@ body{
 .item-0:hover .flip {transform: rotateX(180deg);height: 300px;}
 .item-0,.item-0 .front,.item-0 .back {width: 300px;	height: 300px;}
 .item-0 .front,.item-0 .back {	position: absolute;	top: 0px;	left: 0px;	backface-visibility: hidden;}
-.item-0 .back .photo{width: 40px;height: 40px;overflow: hidden;border-radius: 18px;display: block;}
+.item-0 .back .photo{width: 40px;height: 40px;overflow: hidden;border-radius: 20px;display: block;}
 .item-0 .back .name{position: absolute;top: 20px;left: 65px;right: 0;margin: auto;overflow: hidden;text-overflow:ellipsis;white-space: nowrap;font-size: 12px;font-weight: bold;text-align: left;color: #fff;}
 .item-0 .back .date{position: absolute;top: 40px;left: 65px;right: 0;text-align: left;margin: 0;font-size: 10px;text-overflow: ellipsis;white-space: nowrap;overflow: hidden;display: inline-block;color: #ccc;}
 
@@ -110,7 +110,7 @@ body{
 .item-1:hover .flip {	transform: rotateX(180deg);}
 .item-1,.item-1 .front,.item-1 .back {	width: 200px;	height: 200px;	position: absolute;	top: 0;	right: -210px;}
 .item-1 .front,.item-1 .back {	position: absolute;	top: 0px;	left: 0px;	backface-visibility: hidden;}
-.item-1 .back .photo{width: 40px;height: 40px;overflow: hidden;border-radius: 18px;display: block;}
+.item-1 .back .photo{width: 40px;height: 40px;overflow: hidden;border-radius: 20px;display: block;}
 .item-1 .back .name{position: absolute;top: 20px;left: 65px;right: 0;margin: auto;overflow: hidden;text-overflow:ellipsis;white-space: nowrap;font-size: 12px;font-weight: bold;text-align: left;color: #fff;}
 .item-1 .back .date{position: absolute;top: 40px;left: 65px;right: 0;text-align: left;margin: 0;font-size: 10px;text-overflow: ellipsis;white-space: nowrap;overflow: hidden;display: inline-block;color: #ccc;}
 
@@ -119,7 +119,7 @@ body{
 .item-2:hover .flip {	transform: rotateX(180deg);}
 .item-2,.item-2 .front,.item-2 .back {	width: 200px;	height: 200px;	position: absolute;	bottom: 0;	left: -210px;}
 .item-2 .front,.item-2 .back {	position: absolute;	top: 0px;	left: 0px;	backface-visibility: hidden;}
-.item-2 .back .photo{width: 40px;height: 40px;overflow: hidden;border-radius: 18px;display: block;}
+.item-2 .back .photo{width: 40px;height: 40px;overflow: hidden;border-radius: 20px;display: block;}
 .item-2 .back .name{position: absolute;top: 20px;left: 65px;right: 0;margin: auto;overflow: hidden;text-overflow:ellipsis;white-space: nowrap;font-size: 12px;font-weight: bold;text-align: left;color: #fff;}
 .item-2 .back .date{position: absolute;top: 40px;left: 65px;right: 0;text-align: left;margin: 0;font-size: 10px;text-overflow: ellipsis;white-space: nowrap;overflow: hidden;display: inline-block;color: #ccc;}
 

@@ -12,7 +12,7 @@ body{
     margin: 20px;
     display: flex;
     flex-direction: row;
-    margin-left: 60%;
+    justify-content: flex-end;
 }
 
 .de_topic_box{
@@ -43,7 +43,7 @@ body{
     width: 40px;
     height: 40px;
     overflow: hidden;
-    border-radius: 18px;
+    border-radius: 20px;
     display: block;
 }
 .de_topic_box .user_info .name {
@@ -162,7 +162,7 @@ body{
 	    margin: 20px;
 	    display: flex;
 	    flex-direction: row;
-	    margin-left: 50%;
+	    justify-content: flex-end;
 	}
 
 }
@@ -174,7 +174,7 @@ body{
 	    margin: 20px;
 	    display: flex;
 	    flex-direction: row;
-	    margin-left: 2%;
+	    justify-content: flex-end;
 	}
 
 }
