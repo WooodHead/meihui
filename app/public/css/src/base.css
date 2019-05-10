@@ -66,6 +66,16 @@ img{
     font-size: 20px;
     margin-left: 5px;
 }
+.header .lang_login{
+    position: absolute;
+    right: 250px;;
+}
+.header .lang_login a{
+    color: #929292;
+}
+.header .lang_login a.active{
+    color: #fff;
+}
 .header .user_profile{
 	display: flex;
     flex-direction: row;
@@ -91,6 +101,15 @@ img{
 }
 .header .search{
     width: 130px;height: 100%;background:#000;color: white;
+}
+.header .lang_logout{
+    position:absolute;right:160px;
+}
+.header .lang_logout a{
+    color: #929292;
+}
+.header .lang_logout a.active{
+    color: #fff;
 }
 .header .login{
     display: flex;flex-direction: row;align-items: center;position:absolute;right:20px;top: 10px;
@@ -145,6 +164,10 @@ img{
     .header .search{
         width: 70px;
     }
+    .header .lang_login {
+        /* right: 110px; */
+        display: none;
+    }
     .header .user_profile{
         right: 0px;
         width: 100px;
@@ -156,6 +179,10 @@ img{
     .header .drawerShow{
         position: absolute;
         right: 0;
+    }
+    .header .lang_logout {
+        /* right: 120px; */
+        display: none;
     }
     .header .login{
         right:5px;

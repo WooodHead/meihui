@@ -30,8 +30,10 @@
 				{% endblock %}
 
 		        <a class="search" href="/search">{{__('Search')}}...</a>
-
 				{% if user.Id %}
+				<div class="lang_login">
+					<a href="javascript:void(0)" class="lang_zh">中文</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="javascript:void(0)" class="lang_en">English</a>
+				</div>
 				<a href="/users/{{user.Id}}?jobTag=2" class="user_profile">
 					{% if user.avatarUrl %}
 						<img class="photo" src="{{user.avatarUrl}}" title="用户头像">
@@ -48,6 +50,9 @@
 					<i-button type="text" ghost="true" @click="drawerShow = !drawerShow" size="small"><icon type="md-menu" size="30"></icon></i-button>
 				</div>
 				{% else %}
+				<div class="lang_logout">
+					<a href="javascript:void(0)" class="lang_zh">中文</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="javascript:void(0)" class="lang_en">English</a>
+				</div>
 				<div class="login">
 					<i-button type="text" ghost="true" to="/login" style="">
 						<icon type="md-person" style="font-size: 30px;" color="#fff"></icon>{{__('Register/login')}}
