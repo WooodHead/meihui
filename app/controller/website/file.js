@@ -70,6 +70,7 @@ class FileController extends BaseController {
     async deleteFile(){
       const ctx = this.ctx;
       const fileType = ctx.params.fileType;
+      let userId = ctx.user.Id;
 
       let dir = '';
       if (fileType == 1){
@@ -89,7 +90,7 @@ class FileController extends BaseController {
       }
 
       try{
-        let filePath = path.join(ctx.helper.basePath, dir, ctx.query.filename);
+        let filePath = path.join(ctx.helper.basePath, dir, userId+'', ctx.query.filename);
         if(fs.existsSync(filePath)){
           fs.unlinkSync(filePath);
         }
