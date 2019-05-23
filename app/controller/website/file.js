@@ -66,6 +66,40 @@ class FileController extends BaseController {
         //文件响应
         ctx.body = result;
     }
+
+    async deleteFile(){
+      const ctx = this.ctx;
+      const fileType = ctx.params.fileType;
+
+      let dir = '';
+      if (fileType == 1){
+        dir = ctx.helper.imagePath;
+      }
+      else if (fileType == 2){
+        dir = ctx.helper.pdfPath;
+      }
+      else if (fileType == 3){
+        dir = ctx.helper.rar_zipPath;
+      }
+      else if (fileType == 4){
+        dir = ctx.helper.videoPath;
+      }
+      else{
+        dir = ctx.helper.othersPath;
+      }
+
+      try{
+        let filePath = path.join(ctx.helper.basePath, dir, ctx.query.filename);
+        if(fs.existsSync(filePath)){
+          fs.unlinkSync(filePath);
+        }
+        super.success('删除成功!');
+      }
+      catch(e){
+        super.failure(e);
+      }
+
+    }
 }
 
 module.exports = FileController;
