@@ -176,5 +176,8 @@
     "authError": "authorization failed",
     "bindSuccess": "bind success, please log in",
     "bindFailed": "bind failed",
-    "notActiveByEmail": "not active and please active by email"
+    "notActiveByEmail": "not active and please active by email",
+
+    "hideProductTips":"no right to browser hide product, please login!",
+    "hideProductTipsContactAdmin":"sorry, product is hide, please contact administrator！"
 }

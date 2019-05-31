@@ -28,7 +28,27 @@ class ArtifactsController extends BaseController{
 
     try{
       const result = await ctx.service.artifacts.find(ctx.helper.parseInt(ctx.params.id));
-      super.success(result);
+      if (result.visible == 0){
+        super.success(result);
+      }
+      else{
+        if(!ctx.user){
+          super.failure(ctx.__('hideProductTips'));
+        }
+        else{
+          if (ctx.app.judgeUserIsVipTeacher(ctx.user)){
+            super.success(result);
+          }
+          else{
+            if(ctx.user.Id == result.userId){
+              super.success(result);
+            }
+            else{
+              super.failure(ctx.__('hideProductTipsContactAdmin'));
+            }
+          }
+        }
+      }
     }
     catch(e){
       ctx.logger.error(e.message);

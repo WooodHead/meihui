@@ -175,5 +175,8 @@
     "authError": "授权失败",
     "bindSuccess": "绑定成功，请登录!",
     "bindFailed": "绑定失败!",
-    "notActiveByEmail": "未激活，请先进入邮箱激活，或者重发邮件激活"
+    "notActiveByEmail": "未激活，请先进入邮箱激活，或者重发邮件激活",
+
+    "hideProductTips":"隐藏的作品没权限查看，请先登录!",
+    "hideProductTipsContactAdmin":"抱歉，该作品已被隐藏，请联系管理员！"
 }

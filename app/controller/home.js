@@ -71,10 +71,36 @@ class HomeController extends BaseController {
     const ctx = this.ctx;
     try{
       const data = await ctx.service.artifacts.find(ctx.helper.parseInt(ctx.params.id));
-      await ctx.render('projects.html',{
-          data:data,
-          user:ctx.user
-      });
+      let result = {
+        status:200,
+        data:data,
+        user:ctx.user
+      };
+
+      if (data.visible == 0){
+        result.status = 200;
+      }
+      else{
+        if(!ctx.user){
+          result.status = 500;
+          result.data = ctx.__('createdSuccess');
+        }
+        else{
+          if (ctx.app.judgeUserIsVipTeacher(ctx.user)){
+            result.status = 200;
+          }
+          else{
+            if(ctx.user.Id == data.userId){
+              result.status = 200;
+            }
+            else{
+              result.status = 500;
+              result.data = ctx.__('createdSuccess');
+            }
+          }
+        }
+      }
+      await ctx.render('projects.html',result);
     }
     catch(e){
         console.log(e);
