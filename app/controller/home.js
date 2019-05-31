@@ -86,7 +86,7 @@ class HomeController extends BaseController {
           result.data = ctx.__('hideProductTips');
         }
         else{
-          if (ctx.app.judgeUserIsVipTeacher(ctx.user)){
+          if (ctx.helper.judgeUserIsVipTeacher(ctx.user)){
             result.status = 200;
           }
           else{
