@@ -62,6 +62,7 @@ module.exports = app => {
   router.get('/website/artifacts/getPersonalJobByUserId', controller.website.artifacts.getPersonalJobByUserId);
   router.get('/website/artifacts/transterInsertDataToES', adminAuthCheck, controller.website.artifacts.transterInsertDataToES);
   router.get('/website/artifacts/transterUpdateDataToES', adminAuthCheck, controller.website.artifacts.transterUpdateDataToES);
+  router.put('/website/artifacts/updateVisibleById/:id', ajaxAuthCheck, controller.website.artifacts.updateVisibleById);
 
   router.get('/website/artifactScores/findByArtifactIdWithPage', controller.website.artifactScores.findByArtifactIdWithPage);
   router.get('/website/artifactScores/findByScorerIdWithPage', controller.website.artifactScores.findByScorerIdWithPage);

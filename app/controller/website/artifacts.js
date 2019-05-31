@@ -181,6 +181,21 @@ class ArtifactsController extends BaseController{
         super.failure(ctx.__('noDataNeedToSync'));
     }
   }
+
+  async updateVisibleById(){
+    const ctx = this.ctx;
+    const id = ctx.helper.parseInt(ctx.params.id);
+    const visible = ctx.request.body.visible;
+
+    let result = await ctx.service.artifacts.updateVisibleById(id, visible);
+
+    if (result){
+      super.success("操作成功!");
+    }
+    else{
+      super.failure("操作失败!");
+    }
+  }
 }
 
 module.exports = ArtifactsController;

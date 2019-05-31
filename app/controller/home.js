@@ -83,7 +83,7 @@ class HomeController extends BaseController {
       else{
         if(!ctx.user){
           result.status = 500;
-          result.data = ctx.__('createdSuccess');
+          result.data = ctx.__('hideProductTips');
         }
         else{
           if (ctx.app.judgeUserIsVipTeacher(ctx.user)){
@@ -95,7 +95,7 @@ class HomeController extends BaseController {
             }
             else{
               result.status = 500;
-              result.data = ctx.__('createdSuccess');
+              result.data = ctx.__('hideProductTipsContactAdmin');
             }
           }
         }

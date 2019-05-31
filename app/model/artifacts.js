@@ -472,5 +472,15 @@ module.exports = app => {
     return result;
   }
 
+  Artifacts.updateVisibleById = async function(id, visible) {
+    await this.update({
+      visible: visible
+    }, {
+      where: {
+        Id: id
+      }
+    });
+  }
+
   return Artifacts;
 };
