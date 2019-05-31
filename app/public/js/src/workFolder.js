@@ -6,6 +6,7 @@ var index = new Vue({
             aoData:{limit:12,offset:0,topicId:0},
             headDataList:[],
             uploadTotal:"",
+            topicStatus:0,
             dataList:[],
             headInfo:{fullname:"",date:"",name:"",description:"",count:""},
             containerStyle:{
@@ -13,6 +14,70 @@ var index = new Vue({
             },
             scrollModel:true,
             drawerShow:false
+        }
+    },
+    methods:{
+        checkThisTopic(id){
+            window.location.href = config.viewUrl.workFolder.replace(":id",id);
+        },
+        uploadToTopic(id){
+            window.location.href = config.viewUrl.uploadWork.replace(":id",id);
+        },
+        cockThisTopic(id, status){
+            let that = this;
+            let topicStatus = "";
+            if (status == 1) {
+                topicStatus = 0;
+            } else {
+                topicStatus = 1;
+            }
+            $.ajax({
+                url: '/website/topics/'+id,
+                type: 'PUT',
+                data: {topicId: id,status:topicStatus},
+                success(res){
+                    if (res.status == 200) {
+                        that.$Notice.success({
+                            title:res.data,
+                            duration:1,
+                            onClose(){
+                                $.ajax({
+                                    url: config.ajaxUrls.getTopicAndArtifactById,
+                                    type: 'GET',
+                                    data: that.aoData,
+                                    success:function(res){
+                                        if (res.status == 200) {
+                                            that.$Loading.finish();
+                                            that.dataList = res.data.rows.artifacts;
+                                            that.headDataList = res.data.rows.artifacts;
+                                            that.uploadTotal = res.data.count;
+                                            that.topicStatus = res.data.rows.status;
+
+                                            that.headInfo.avatarUrl = res.data.rows.user.avatarUrl;
+                                            that.headInfo.fullname = res.data.rows.user.fullname;
+                                            that.headInfo.description = res.data.rows.description;
+                                            that.headInfo.date = res.data.rows.createAt.split("T")[0] + " 发布";
+                                            that.headInfo.name = res.data.rows.name;
+                                            that.headInfo.Id = res.data.rows.userId;
+
+                                            if (that.dataList.length == res.data.count) {
+                                                that.scrollModel = false;
+                                            }else{
+                                                that.scrollModel = true;
+                                            }
+                                        }
+                                    }
+                                })
+                            }
+                        });
+                    } else {
+                        that.$Notice.error({title:res.data});
+                    }
+                }
+            });
+        },
+        settingThisTopic(id){
+            window.location.href = config.viewUrl.topicsUpdate.replace(":id",id);
         }
     },
     created(){
@@ -32,6 +97,7 @@ var index = new Vue({
                     that.dataList = res.data.rows.artifacts;
                     that.headDataList = res.data.rows.artifacts;
                     that.uploadTotal = res.data.count;
+                    that.topicStatus = res.data.rows.status;
 
                     that.headInfo.avatarUrl = res.data.rows.user.avatarUrl;
                     that.headInfo.fullname = res.data.rows.user.fullname;

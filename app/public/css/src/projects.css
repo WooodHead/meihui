@@ -16,7 +16,7 @@ body{
 .zan_box{
     display: flex;
     flex-direction: column;
-    position: absolute;
+    position: fixed;
     top: 0px;
     left: 20px;
 }
@@ -34,15 +34,22 @@ body{
     top: 65px;
     left: 30px;
 }
-
+.opt_ul{
+    position: fixed;
+    top:120px;
+    left:43px;
+}
 .opt_ul .edit_btn .ivu-btn{
-    position: absolute;top: 130px;left: 40px;width: 40px;height: 40px;font-size: 24px;
+    font-size: 24px;
+    margin-top: 10px;
 }
 .opt_ul .delete_btn .ivu-btn{
-    position: absolute;top: 180px;left: 40px;width: 40px;height: 40px;font-size: 24px;
+    font-size: 24px;
+    margin-top: 10px;
 }
 .opt_ul .show_btn .ivu-btn{
-    position: absolute;top: 230px;left: 40px;width: 40px;height: 40px;font-size: 24px;
+    font-size: 24px;
+    margin-top: 10px;
 }
 
 .project_detail{
@@ -50,6 +57,7 @@ body{
     margin:60px auto;
     background: white;
     padding: 70px 20px 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 }
 .project_detail .score_box{
     display: flex;
@@ -119,8 +127,22 @@ body{
     display: flex;
     flex-direction: row;
     align-items: center;
+    letter-spacing: 2px;
 }
-
+.project_detail .score{
+    width: 150px;
+    height: 60px;
+    font-weight: bold;
+    line-height: 54px;
+    font-size: 22px;
+    color: #CF011B;
+    border-radius: 30px;
+    border: solid 5px #EFEFEF;
+    text-align: center;
+    position: absolute;
+    right: 13%;
+    top: 135px;
+}
 .project_detail .abstract {
     font-size: 14px;
     line-height: 2em;
@@ -167,6 +189,7 @@ body{
     margin: 40px auto;
     background: #fff;
     width: 80%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
 }
 /* 其他用户评论 */
 .comment_list li {
@@ -222,7 +245,24 @@ body{
     padding: 20px;
     position: relative;
 }
-
+.score_box .scoreClose{
+    position: absolute;
+    margin-top: -10px;
+    margin-left: 255px;
+    cursor: pointer;
+}
+.score_box .title{
+    color: #47cb89;
+    margin-bottom: 10px;
+    text-align: center;
+}
+.score_box .des{
+    text-align: center;
+}
+.score_box .ivu-input-wrapper {
+    width: 150px;
+    margin-right: 20px;
+}
 
 .footer {
 	padding: 5px 0;

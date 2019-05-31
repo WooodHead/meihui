@@ -11,6 +11,19 @@ var projects = new Vue({
                 artifactId: 0
             },
             scrollModel: true,
+            scoreBoxStyle:{
+                position: "fixed",
+                margin: "20px auto",
+                padding: "20px",
+                alignItems: "center",
+                width:"310px",
+                height:"auto",
+                background:"#fff",
+                boxShadow: "0 0 10px rgba(0,0,0,0.1)",
+                left:"",
+                top:""
+            },
+            scoresModel:false,
             dataList: [],
             success: "1",
             projectStyle: {
@@ -41,6 +54,11 @@ var projects = new Vue({
         deleteArtifact(){
             this.deleteModal = true;
         },
+        showScoreBox(event){
+            this.scoresModel = true;
+            this.scoreBoxStyle.left = event.pageX + 50 + "px";
+            this.scoreBoxStyle.top = event.pageY - 60 + "px";
+        },
         ok() {
             let that = this;
             this.$Loading.start();
@@ -66,8 +84,35 @@ var projects = new Vue({
                 }
             });
         },
-        showArtifact() {
-            console.log("点击隐藏、显示");
+        showArtifact(value) {
+            let visible = new Object();
+            if (value) {
+                visible = 0;
+            } else {
+                visible = 1;
+            }
+            let that = this;
+            this.$Loading.start();
+            $.ajax({
+                url: config.ajaxUrls.updateVisibleById.replace(":id",this.artifactId),
+                type: 'PUT',
+                data: {visible: visible},
+                success(res){
+                    console.log(res);
+                    if (res.status == 200) {
+                        that.$Loading.finish();
+                        that.$Notice.success({
+                            title:res.data,
+                            onClose(){
+                                location.reload();
+                            }
+                        });
+                    }else{
+                        that.$Loading.error();
+                        that.$Notice.error({title:res.data});
+                    }
+                }
+            });
         },
         downAttach(url) {
             window.open(url);
@@ -199,7 +244,14 @@ var projects = new Vue({
                 success(res) {
                     if (res.status == 200) {
                         that.$Loading.finish();
-                        that.$Notice.success({title:res.data});
+                        that.$Notice.success({
+                            title:res.data,
+                            duration:1,
+                            onClose(){
+                                that.scoresModel = false;
+                                location.reload();
+                            }
+                        });
                     }else{
                         that.$Loading.error();
                         that.$Notice.error({title:res.data});
@@ -207,6 +259,9 @@ var projects = new Vue({
                 }
             });
 
+        },
+        scoreClose(){
+            this.scoresModel = false;
         }
     },
     created() {

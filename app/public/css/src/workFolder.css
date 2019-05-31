@@ -71,7 +71,7 @@ body{
 .topic_info .topic_title {
     font-size: 14px;
     font-weight: bold;
-    color: #07af69;
+    color: #68686b;
     overflow: hidden;
     margin: 0.8em 0;
     height: 3em;
@@ -124,11 +124,20 @@ body{
     font-size: 0;
     z-index: 1;
     text-align: center;
-    background: repeating-linear-gradient( 45deg, #b1dddd, #b1dddd 10px, #beeeee 10px, #beeeee 20px);
+    background: repeating-linear-gradient( 45deg, #b2b2b2, #b2b2b2 10px, #efefef 10px, #efefef 20px);
     overflow: hidden;
 }
-.de_topic_box .topic_action.topic_closed {
+.de_topic_box .topic_closed {
+	position: absolute;
+    top: 0;
+    right: 0;
+    width: 60px;
+    height: 140px;
+    font-size: 0;
+    z-index: 1;
+    text-align: center;
     background: repeating-linear-gradient( 45deg, #ddd, #ddd 10px, #eee 10px, #eee 20px);
+	overflow: hidden;
 }
 .topic_action li {
     margin: 5px;
@@ -218,7 +227,7 @@ body{
     width: 40px;
     height: 40px;
     overflow: hidden;
-    border-radius: 18px;
+    border-radius: 20px;
     display: block;
 }
 .de_card_m .project_info {

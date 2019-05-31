@@ -16,6 +16,11 @@ var index = new Vue({
             drawerShow:false
         }
     },
+    methods:{
+        uploadToTopic(){
+            window.location.href = "/uploadWork/2";
+        }
+    },
     created(){
         let that = this;
         let locale = document.cookie.split("=")[1];

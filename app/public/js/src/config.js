@@ -26,6 +26,7 @@ var config = {
         getArtifactsWithId:'/website/artifacts/:id',
         getPersonalJob: "/website/artifacts/getPersonalJob", //获取我的作品集
         getPersonalJobByUserId: "/website/artifacts/getPersonalJobByUserId", //获取别人的作品集
+        updateVisibleById: "/website/artifacts/updateVisibleById/:id",
         // user
         createUser:'/website/users/createUser',
         getUserData:"/website/users",

@@ -26,38 +26,30 @@
 				{% endif %}
 			</div>
 			<ul class="opt_ul">
+				<li class="edit_btn" v-if="'{{user.roles[0].name}}' == 'admin' || '{{data.topics[0].userId}}' == '{{user.Id}}'  && {{data.topics.length}} != 0 || '{{data.userId}}' == '{{user.Id}}'">
+					<i-button shape="circle" icon="md-create" @click="editArtifact('{{data.jobTag}}')" size="large"></i-button>
+				</li>
 				{% if data.jobTag == 2 %}
-					<li class="edit_btn" v-if="'{{data.userId}}' == '{{user.Id}}'">
-						<i-button shape="circle" icon="md-create" @click="editArtifact('{{data.jobTag}}')" size="large"></i-button>
-					</li>
-					<li class="delete_btn" v-if=" '{{data.userId}}' == '{{user.Id}}'">
+					<li class="delete_btn" v-if="'{{data.userId}}' == '{{user.Id}}'">
 						<i-button shape="circle" icon="ios-trash" @click="deleteArtifact" size="large"></i-button>
 					</li>
 				{% else %}
 					{% if data.topics[0].status == 0 %}
-						<li class="edit_btn" v-if="'{{data.userId}}' == '{{user.Id}}'">
-							<i-button shape="circle" icon="md-create" @click="editArtifact('{{data.jobTag}}')" size="large"></i-button>
-						</li>
 						<li class="delete_btn" v-if="'{{user.roles[0].name}}' == 'admin' || '{{data.topics[0].userId}}' == '{{user.Id}}' || '{{data.userId}}' == '{{user.Id}}'">
 							<i-button shape="circle" icon="ios-trash" @click="deleteArtifact" size="large"></i-button>
 						</li>
-
 					{% endif %}
 				{% endif %}
-
-
-				<!-- <li class="show_btn" v-if="'{{user.roles[0].name}}' == 'admin'">
-					<i-button shape="circle" icon="md-eye" @click="showArtifact" size="large"></i-button>
-				</li> -->
+				<li class="show_btn" v-if="'{{user.roles[0].name}}' == 'admin' || '{{data.topics[0].userId}}' == '{{user.Id}}' || '{{data.userId}}' == '{{user.Id}}'">
+					<i-button shape="circle" :icon="'{{data.visible}}' == 1 ? 'md-eye-off' : 'md-eye'" @click="showArtifact({{data.visible}})" size="large"></i-button>
+				</li>
+				<li class="edit_btn" v-if="( '{{user.roles[0].name}}' == 'vip' && '{{data.topics[0].userId}}' == '{{user.Id}}' && {{data.topics.length}} != 0 ) || '{{user.roles[0].name}}' == 'admin'">
+					<i-button shape="circle" icon="i-icon iconfont icon-fen" @click="showScoreBox($event)" size="large" title="打分"></i-button>
+				</li>
 			</ul>
 			<i-button class="close_btn" type="default" shape="circle" icon="md-close" size="large" @click="closeThePage"></i-button>
 			<back-top></back-top>
             <div class="project_detail">
-				<div class="score_box" v-if="'{{user.roles[0].name}}' == 'vip' && '{{data.topics[0].userId}}' == '{{user.Id}}' && {{data.topics.length}} != 0">
-					<label>{{__('WorksScore')}}:</label>
-					<i-input type="text" value="{{data.artifact_scores[0].score}}" @on-change="scoreChange(event,{{data.Id}})" placeholder="{{__('ScoreTitle')}}" size="large" number autofocus></i-input>
-					<i-button type="success" @click="submitScore">{{__('score')}}</i-button>
-				</div>
                 <div class="stats_tags">
                     <div class="badges">
 						<icon type="ios-ribbon" style="font-size: 22px;color:#999;"></icon>
@@ -72,6 +64,7 @@
                         <span>{{data.commentCount}}</span>
                     </div>
                 </div>
+				<p class="score" v-if="( '{{user.roles[0].name}}' == 'vip' && '{{data.topics[0].userId}}' == '{{user.Id}}' && {{data.topics.length}} != 0 ) || '{{user.roles[0].name}}' == 'admin' " v-text="'{{data.artifact_scores[0].score}}' != 'null' && '{{data.artifact_scores[0].score}}' != '' ? {{data.artifact_scores[0].score}} + '分' : '未打分'"></p>
                 <div class="user_info">
                     <a href="/users/{{data.user.Id}}">
 						{% if data.user.avatarUrl %}
@@ -180,6 +173,12 @@
 		            <span style="font-size: 15px;">{{__('DelWork')}}?</span>
 		        </p>
 		    </modal>
+			<div class="score_box" :style="scoreBoxStyle" v-show="scoresModel">
+				<icon class="scoreClose" type="md-close" @click="scoreClose" style="font-size: 22px;color:#999;"></icon>
+				<h2 class="title">{{__('WorksScore')}}</h2>
+				<i-input type="text" value="{{data.artifact_scores[0].score}}" @on-change="scoreChange(event,{{data.Id}})" placeholder="0~100之间的整数" size="large" number autofocus></i-input>
+				<i-button type="success" @click="submitScore">{{__('score')}}</i-button>
+			</div>
 			<div class="footer">
 				<p>{{__('schoolName')}}</p>
 			</div>
@@ -188,6 +187,7 @@
 		<script type="text/javascript" src="../public/js/lib/jquery.min.js"></script>
 	    <script type="text/javascript" src="../public/js/lib/vue.min.js"></script>
 	    <script type="text/javascript" src="../public/js/lib/iview.min.js"></script>
+	    <script type="text/javascript" src="../public/js/src/config.js"></script>
 	    <script type="text/javascript" src="../public/js/src/projects.js"></script>
 	</body>
 </html>

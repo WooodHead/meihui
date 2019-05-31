@@ -19,6 +19,7 @@
     width: 950px;
     margin: 0 auto;
     background: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 .container .form_box .left_form{
 	width: 50%;
