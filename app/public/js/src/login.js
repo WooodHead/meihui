@@ -3,7 +3,8 @@ var index = new Vue({
     data() {
         return {
             containerStyle: {
-                "margin": "",
+                margin: "",
+                minHeight:"500px",
             },
             single: true,
             drawerShow: false,
@@ -43,6 +44,11 @@ var index = new Vue({
     created() {
         this.containerStyle.margin = (document.documentElement.clientHeight - 450) / 2 - 90 + "px auto";
         let that = this;
+        if (document.documentElement.clientHeight < 780) {
+            this.containerStyle.margin = "10px auto";
+        } else {
+            this.containerStyle.margin = (document.documentElement.clientHeight - 450) / 2 - 90 + "px auto";
+        }
         if (document.documentElement.clientWidth > 1200) {
             this.modelWidth = "60%";
         } else if (document.documentElement.clientWidth < 1200) {

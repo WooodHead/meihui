@@ -21,7 +21,7 @@
                     <i-input v-model="formItem.name" placeholder="{{__('EnterTitle')}}"></i-input>
                 </form-item>
 				<form-item label="{{__('Major')}}" prop="major">
-					<i-select :value="formItem.major" style="width:300px" @on-change="majorChange">
+					<i-select :value="formItem.major" @on-change="majorChange">
 				        <i-option :value="1" :key="1">{{__('ClothingApparel')}}</i-option>
 						<i-option :value="2" :key="2">{{__('IndustrialDesign')}}</i-option>
 		                <i-option :value="3" :key="3">{{__('ProducDesign')}}</i-option>

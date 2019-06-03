@@ -174,7 +174,13 @@ var index = new Vue({
             this.locale = 1;
             this.mobileCodeText = "点击获取验证码";
         }
-        this.containerStyle.margin = (document.documentElement.clientHeight - 400 ) / 2 - 120 + "px auto";
+        let clientWidth = document.documentElement.clientWidth;
+        let clientHeight = document.documentElement.clientHeight;
+        if (clientHeight < 600) {
+            this.containerStyle.margin = "0px auto";
+        } else {
+            this.containerStyle.margin = (clientHeight - 480 ) / 2 - 90 + "px auto";
+        }
         let that = this;
         $.ajax({
             url: config.ajaxUrls.getCaptcha,

@@ -371,10 +371,10 @@ body{
 	    padding: 10px 10px;
 	}
 	.de_topic_box{
-	    margin: 20px 10px 0 10px;
+	    margin: 20px 2% 0;
 	}
 	.topic_description {
-	    margin: 0 10px 20px 10px;
+	    margin: 0 2% 0 2%;
 	}
 	.de_stats_tags>li {
 	    width: 27%;
@@ -412,6 +412,13 @@ body{
 		padding-left: 0px;		/* 弹出层  0px*/
 		border-left: #ccc 0px dotted;	/* border-top: #ccc 1px dotted;*/
 		border-top: #ccc 1px dotted;
+	}
+	.de_card_m{
+		margin: 10px auto;
+	}
+	.de_card_m .project_info .workScore{
+		left: 50%;
+		bottom: 55px;
 	}
 }
 

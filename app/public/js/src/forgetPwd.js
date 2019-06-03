@@ -122,7 +122,11 @@ var index = new Vue({
             this.locale = 1;
             this.mobileCodeText = "点击获取验证码"
         }
-        this.containerStyle.margin = (document.documentElement.clientHeight - 400 ) / 2 - 90 + "px auto";
+        if (document.documentElement.clientHeight < 780) {
+            this.containerStyle.margin = "10px auto";
+        } else {
+            this.containerStyle.margin = (document.documentElement.clientHeight - 400 ) / 2 - 90 + "px auto";
+        }
     }
 })
 function clock(that){
